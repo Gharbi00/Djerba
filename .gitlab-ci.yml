@@ -9,7 +9,7 @@ cache:
 
 build:
   stage: build
-  image: node:18.20.5
+  image: cimg/openjdk:21.0-node # Java 21 + Node.js préinstallé
   services:
     - name: mysql:8.0
       alias: mysql
@@ -19,9 +19,8 @@ build:
     MYSQL_PASSWORD: Gharbix23*
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
-    - echo "Installing Java 21..."
-    - apt-get update && apt-get install -y openjdk-21-jdk
-    - java -version  # Vérifier l'installation de Java
+    - echo "Verifying Java version..."
+    - java -version  # Vérifier que Java 21 est bien installé
 
     - echo "Installing Node.js dependencies..."
     - cd FrontEnd
@@ -30,7 +29,7 @@ build:
     - cd ..
 
     - echo "Building Backend..."
-    - apt-get update && apt-get install -y default-mysql-client
+    - apt-get update && apt-get install -y default-mysql-client maven
     - echo "Waiting for MySQL to be ready..."
     - until mysqladmin ping -h mysql --silent; do sleep 1; done
     - cd BackEnd
@@ -44,7 +43,7 @@ build:
 
 deploy:
   stage: deploy
-  image: node:18.20.5
+  image: cimg/openjdk:21.0-node # Même image que le build pour assurer la compatibilité
   services:
     - name: mysql:8.0
       alias: mysql
@@ -56,10 +55,19 @@ deploy:
   script:
     - echo "Deploying Frontend..."
     - npm install -g http-server
-    - if [ -d "FrontEnd/dist" ]; then cd FrontEnd/dist && nohup http-server -p 4200 & else echo "Frontend build not found!" && exit 1; fi
+    - if [ -d "FrontEnd/dist" ]; then 
+        cd FrontEnd/dist && nohup http-server -p 4200 > ../../frontend.log 2>&1 & 
+      else 
+        echo "Frontend build not found!" && exit 1 
+      fi
 
     - echo "Deploying Backend..."
-    - if [ -f "BackEnd/target/*.jar" ]; then cd BackEnd && nohup java -jar target/*.jar & else echo "Backend build not found!" && exit 1; fi
+    - BACKEND_JAR=$(ls BackEnd/target/*.jar | head -n 1)
+    - if [ -f "$BACKEND_JAR" ]; then 
+        cd BackEnd && nohup java -jar "$BACKEND_JAR" > ../backend.log 2>&1 & 
+      else 
+        echo "Backend build not found!" && exit 1 
+      fi
 
     - echo "Waiting for Backend to be available..."
     - sleep 10
