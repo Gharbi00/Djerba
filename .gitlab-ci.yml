@@ -56,17 +56,13 @@ deploy:
     MYSQL_PASSWORD: Gharbix23*
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
-    # Deploy Frontend
     - echo "Deploying Frontend..."
     - npm install -g http-server
     - cd FrontEnd/dist/
-    - http-server -p 4200 &  # Serve the frontend on port 4200
-    - sleep 10
-
-    # Deploy Backend
+    - http-server -p 4200
     - echo "Deploying Backend..."
     - cd ../BackEnd
-    - java -jar target/*.jar &  # Start the backend
+    - java -jar target/*.jar
     - echo "Backend running at: http://localhost:8080"
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
     - echo "Frontend running at: http://localhost:4200"
