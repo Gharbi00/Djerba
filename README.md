@@ -16,10 +16,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 ```
 cd existing_repo
 <<<<<<< HEAD
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/gharbix1/Djerba.git
 =======
 git remote add origin https://gitlab.com/gharbix/djerba.git
 >>>>>>> c9589c2 (Initial commit)
+=======
+git remote add origin https://gitlab.com/iheb5965707/djerba.git
+>>>>>>> 2cff2be947cdf5954b5945fd526906e93050dc1a
 git branch -M main
 git push -uf origin main
 ```
@@ -27,10 +31,14 @@ git push -uf origin main
 ## Integrate with your tools
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/gharbix1/Djerba/-/settings/integrations)
 =======
 - [ ] [Set up project integrations](https://gitlab.com/gharbix/djerba/-/settings/integrations)
 >>>>>>> c9589c2 (Initial commit)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/iheb5965707/djerba/-/settings/integrations)
+>>>>>>> 2cff2be947cdf5954b5945fd526906e93050dc1a
 
 ## Collaborate with your team
 
@@ -45,10 +53,14 @@ git push -uf origin main
 Use the built-in continuous integration in GitLab.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 - [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
 =======
 - [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
 >>>>>>> c9589c2 (Initial commit)
+=======
+- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
+>>>>>>> 2cff2be947cdf5954b5945fd526906e93050dc1a
 - [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
 - [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
 - [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
