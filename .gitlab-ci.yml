@@ -41,8 +41,9 @@ build:
     paths:
       - FrontEnd/dist/
       - BackEnd/target/*.jar
+
 deploy:
-  image: node:18.20.5 # Use Node.js version 18.20.5 for the deploy stage
+  image: node:18.20.5
   stage: deploy
   services:
     - name: mysql:8.0
@@ -56,12 +57,14 @@ deploy:
     - echo "Deploying Frontend..."
     - npm install -g http-server
     - cd FrontEnd/dist/
-    - http-server -p 4200
+    - http-server -p 4200 &  # Run http-server in the background to serve the frontend
+    - sleep 10  # Wait for the server to start
+    
     - echo "Deploying Backend..."
     - cd ../BackEnd
-    - java -jar target/*.jar
+    - java -jar target/*.jar &  # Start the backend server in the background
+    - sleep 10  # Wait for the backend to be ready
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
-    
 
   environment:
     name: production
