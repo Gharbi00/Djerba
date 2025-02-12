@@ -25,7 +25,7 @@ build:
     - echo "Installing Node.js dependencies..."
     - cd FrontEnd
     - npm ci --legacy-peer-deps
-    - npm run build --prod
+    - npm run build --prod # Ensure this is focusing only on client-side build
     - cd ..
 
     - echo "Building Backend..."
@@ -73,8 +73,8 @@ deploy:
     - sleep 10
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
 
-    - echo "Frontend running at:"
-    - echo "Backend running at:"
+    - echo "Frontend running at:" # Add actual frontend URL if required
+    - echo "Backend running at:" # Add actual backend URL if required
 
   environment:
     name: production
