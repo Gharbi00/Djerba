@@ -1,3 +1,12 @@
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+    - BackEnd/.m2/
+
 build:
   stage: build
   image: node:18.20.5
@@ -11,15 +20,8 @@ build:
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
     - echo "Installing Java 21..."
-    # Install Java 21 manually by downloading from OpenJDK
-    - apt-get update
-    - apt-get install -y wget
-    - wget https://download.java.net/java/GA/jdk21/9/GPL/openjdk-21_linux-x64_bin.tar.gz
-    - tar -xzf openjdk-21_linux-x64_bin.tar.gz
-    - mv jdk-21 /opt/
-    - update-alternatives --install /usr/bin/java java /opt/jdk-21/bin/java 1
-    - update-alternatives --config java
-    - java -version  # Verify Java installation
+    - apt-get update && apt-get install -y openjdk-21-jdk
+    - java -version  # Vérifier l'installation de Java
 
     - echo "Installing Node.js dependencies..."
     - cd FrontEnd
@@ -40,10 +42,9 @@ build:
       - FrontEnd/dist/
       - BackEnd/target/*.jar
 
-
 deploy:
-  image: node:18.20.5
   stage: deploy
+  image: node:18.20.5
   services:
     - name: mysql:8.0
       alias: mysql
@@ -55,15 +56,17 @@ deploy:
   script:
     - echo "Deploying Frontend..."
     - npm install -g http-server
-    - cd FrontEnd/dist/
-    - http-server -p 4200 &  # Run http-server in the background to serve the frontend
-    - sleep 10  # Wait for the server to start
-    
+    - if [ -d "FrontEnd/dist" ]; then cd FrontEnd/dist && nohup http-server -p 4200 & else echo "Frontend build not found!" && exit 1; fi
+
     - echo "Deploying Backend..."
-    - cd ../BackEnd
-    - java -jar target/*.jar &  # Start the backend server in the background
-    - sleep 10  # Wait for the backend to be ready
+    - if [ -f "BackEnd/target/*.jar" ]; then cd BackEnd && nohup java -jar target/*.jar & else echo "Backend build not found!" && exit 1; fi
+
+    - echo "Waiting for Backend to be available..."
+    - sleep 10
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
+
+    - echo "Frontend running at: http://localhost:4200"
+    - echo "Backend running at: http://localhost:8080"
 
   environment:
     name: production
