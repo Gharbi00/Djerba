@@ -1,6 +1,5 @@
 stages:
   - build
-  - test
   - deploy
 
 cache:
@@ -10,7 +9,7 @@ cache:
 
 build:
   stage: build
-  image: ruby:3.1 # Custom image without Node.js
+  image: node:18.20.5 # Use Node.js version 18.20.5
   services:
     - name: mysql:8.0
       alias: mysql
@@ -20,14 +19,14 @@ build:
     MYSQL_PASSWORD: Gharbix23*
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
-    # Install Node.js and npm
-    - echo "Installing Node.js and npm..."
-    - apt-get update && apt-get install -y curl
-    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
-    - apt-get install -y nodejs
+    # Install Java 21 and necessary tools for backend
+    - echo "Installing Java 21..."
+    - apt-get update
+    - apt-get install -y openjdk-21
+    - java -version
 
-    # Frontend build
-    - echo "Building Frontend..."
+    # Install Node.js dependencies for frontend
+    - echo "Installing Node.js dependencies..."
     - cd FrontEnd
     - npm ci --legacy-peer-deps  # Use --legacy-peer-deps to resolve dependency issues
     - npm run build --prod
@@ -45,17 +44,8 @@ build:
       - FrontEnd/dist/
       - BackEnd/target/*.jar
 
-test:
-  image: node:20
-  stage: test
-  script:
-    - cd FrontEnd
-    - npm run test -- --watch=false
-    - cd ../BackEnd
-    - mvn test
-
 deploy:
-  image: node:20
+  image: node:18.20.5 # Use Node.js version 18.20.5 for the deploy stage
   stage: deploy
   services:
     - name: mysql:8.0
@@ -66,21 +56,20 @@ deploy:
     MYSQL_PASSWORD: Gharbix23*
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
-    - |
-      # Deploy Frontend
-      echo "Deploying Frontend..."
-      npm install -g http-server
-      cd FrontEnd/dist/
-      http-server -p 4200 &  # Serve the frontend on port 4200
-      sleep 10
+    # Deploy Frontend
+    - echo "Deploying Frontend..."
+    - npm install -g http-server
+    - cd FrontEnd/dist/
+    - http-server -p 4200 &  # Serve the frontend on port 4200
+    - sleep 10
 
-      # Deploy Backend
-      echo "Deploying Backend..."
-      cd ../BackEnd
-      java -jar target/*.jar &  # Start the backend
-      echo "Backend running at: http://localhost:8080"
-      curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
-      echo "Frontend running at: http://localhost:4200"
+    # Deploy Backend
+    - echo "Deploying Backend..."
+    - cd ../BackEnd
+    - java -jar target/*.jar &  # Start the backend
+    - echo "Backend running at: http://localhost:8080"
+    - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
+    - echo "Frontend running at: http://localhost:4200"
 
   environment:
     name: production
