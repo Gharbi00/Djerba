@@ -65,8 +65,8 @@ deploy:
     - sleep 10
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
 
-    - echo "Frontend running at: http://localhost:4200"
-    - echo "Backend running at: http://localhost:8080"
+    - echo "Frontend running at:"
+    - echo "Backend running at:"
 
   environment:
     name: production
