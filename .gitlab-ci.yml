@@ -9,7 +9,7 @@ cache:
 
 build:
   stage: build
-  image: cimg/openjdk:21.0-node # Java 21 + Node.js préinstallé
+  image: cimg/openjdk:21.0-node # Image avec Java 21 + Node.js préinstallé
   services:
     - name: mysql:8.0
       alias: mysql
