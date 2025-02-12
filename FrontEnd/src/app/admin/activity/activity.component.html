@@ -1,0 +1,84 @@
+<div class="container mt-5">
+    <h1 class="text-center">Manage Activities</h1>
+  
+    <!-- Add Activity Button -->
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add Activity</button>
+  
+    <!-- Activity Table -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Type</th> <!-- Changed from Amenities to Type -->
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of activities; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ activity.name }}</td>
+          <td>{{ activity.location }}</td>
+          <td>{{ activity.description }}</td>
+          <td>{{ activity.type }}</td> <!-- Display the type -->
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="openModal(activity)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteActivity(activity.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="activityModalLabel">{{ isEditMode ? 'Edit Activity' : 'Add Activity' }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="activityForm" (ngSubmit)="saveActivity()">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter activity name" />
+              </div>
+              <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" formControlName="location" class="form-control" placeholder="Enter activity location" />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea formControlName="description" class="form-control" placeholder="Enter activity description"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="type" class="form-label">Type</label> <!-- Changed from Amenities to Type -->
+                <input type="text" formControlName="type" class="form-control" placeholder="Enter activity type (e.g., Adventure, Cultural)" />
+              </div>
+  
+              <!-- Picture List URL Section -->
+              <div class="mb-3">
+                <label for="pictureList" class="form-label">Pictures</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Add picture URL" [(ngModel)]="newPictureUrl" [ngModelOptions]="{standalone: true}" />
+                  <button type="button" class="btn btn-secondary" (click)="addPicture()">Add</button>
+                </div>
+                <div *ngIf="activityForm.get('pictureList')?.value?.length > 0">
+                  <ul class="list-group mt-2">
+                    <li class="list-group-item" *ngFor="let picture of activityForm.get('pictureList')?.value.split(','); let i = index">
+                      <span>{{ picture }}</span>
+                      <button type="button" class="btn btn-danger btn-sm float-end" (click)="removePicture(i)">Remove</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+              <button type="submit" class="btn btn-success w-100">{{ isEditMode ? 'Update' : 'Save' }}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

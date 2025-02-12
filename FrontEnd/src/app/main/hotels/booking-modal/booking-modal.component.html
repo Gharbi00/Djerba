@@ -1,0 +1,128 @@
+<div class="modal-dialog">
+  <div class="modal-content hero-form mt-0 grey-bg">
+    <div class="modal-header">
+      <h5 class="modal-title" id="bookingModalLabel">Book {{ hotel?.name }}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <!-- Available Places -->
+      <div class="info-section">
+        <p><strong>Available Places:</strong> {{ hotel?.availablePlaces }}</p>
+      </div>
+
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+        <!-- Offer Prices -->
+        <div class="single-input white-bg">
+          <label for="offerPrices" class="form-label">Select Offer Price</label>
+          <select
+            id="offerPrices"
+            formControlName="offerPrice"
+            class="form-select"
+            (change)="calculateTotalPrice()"
+          >
+            <option *ngFor="let price of hotel?.offersPrices" [value]="price">
+              € {{ price }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Adult Places (previously Total Places Booked) -->
+        <div class="single-input white-bg">
+          <label for="adultPlaces">Adult Places</label>
+          <input
+            type="number"
+            id="adultPlaces"
+            formControlName="adultPlaces"
+            (input)="calculateAdults()"
+            min="0"
+            max="{{ hotel?.availablePlaces }}"
+          />
+        </div>
+        
+        <div class="single-input white-bg">
+          <label for="babies">Babies (0-2 years)</label>
+          <input
+            type="number"
+            id="babies"
+            formControlName="babies"
+            (input)="calculateTotalPrice()"
+            min="0"
+            max="{{ hotel?.availablePlaces }}"
+          />
+        </div>
+        
+        <div class="single-input white-bg">
+          <label for="children">Children (2-12 years)</label>
+          <input
+            type="number"
+            id="children"
+            formControlName="children"
+            (input)="calculateTotalPrice()"
+            min="0"
+            max="{{ hotel?.availablePlaces }}"
+          />
+        </div>
+        
+        <div class="single-input white-bg">
+          <label for="teens">Teens (12-18 years)</label>
+          <input
+            type="number"
+            id="teens"
+            formControlName="teens"
+            (input)="calculateTotalPrice()"
+            min="0"
+            max="{{ hotel?.availablePlaces }}"
+          />
+        </div>
+        
+
+        <!-- Check-in Date -->
+        <div class="col-12">
+          <div class="single-input white-bg">
+            <input
+              type="date"
+              formControlName="checkInDate"
+              required
+              (change)="calculateTotalPrice()"
+            />
+          </div>
+        </div>
+
+        <!-- Check-out Date -->
+        <div class="col-12">
+          <div class="single-input white-bg">
+            <input
+              type="date"
+              formControlName="checkOutDate"
+              required
+              (change)="calculateTotalPrice()"
+            />
+          </div>
+        </div>
+
+        <!-- Total Price -->
+        <div class="col-12">
+          <div class="single-input white-bg">
+            <input
+              type="number"
+              [value]="totalPrice"
+              placeholder="Total Price (€)"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-sm-5 text-center">
+          <button
+            type="submit"
+            class="submit_btn"
+            
+          >
+            Confirm Booking
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

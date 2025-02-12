@@ -1,0 +1,46 @@
+<div class="blog-pagination">
+  <nav>
+    <ul class="pagination justify-content-center">
+      <!-- Previous Arrow -->
+      <li class="page-item arrow" [class.disabled]="actualPage === 1">
+        <a class="page-link" [routerLink]="[baseRoute]" [queryParams]="{ page: actualPage - 1 }" queryParamsHandling="merge">
+          <i class="fas fa-angle-left"></i>
+        </a>
+      </li>
+
+      <!-- First Page and Ellipsis -->
+      <div *ngIf="actualPage > 2" style="display: inline-flex; align-items: center;">
+        <li class="page-item">
+          <a class="page-link" [routerLink]="[baseRoute]" [queryParams]="{ page: 1 }">1</a>
+        </li>
+        <li class="page-item">
+          <span class="page-link">...</span>
+        </li>
+      </div>
+
+      <!-- Dynamic Page Numbers -->
+      <li class="page-item" *ngFor="let page of pagesToBeShown" [class.active]="page === actualPage">
+        <a class="page-link" [routerLink]="[baseRoute]" [queryParams]="{ page: page }" queryParamsHandling="merge">
+          {{ page }}
+        </a>
+      </li>
+
+      <!-- Last Page and Ellipsis -->
+      <div *ngIf="actualPage < lastPage - 1" style="display: inline-flex; align-items: center;">
+        <li class="page-item">
+          <span class="page-link">...</span>
+        </li>
+        <li class="page-item">
+          <a class="page-link" [routerLink]="[baseRoute]" [queryParams]="{ page: lastPage }">{{ lastPage }}</a>
+        </li>
+      </div>
+
+      <!-- Next Arrow -->
+      <li class="page-item arrow" [class.disabled]="actualPage === lastPage">
+        <a class="page-link" [routerLink]="[baseRoute]" [queryParams]="{ page: actualPage + 1 }" queryParamsHandling="merge">
+          <i class="fas fa-angle-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

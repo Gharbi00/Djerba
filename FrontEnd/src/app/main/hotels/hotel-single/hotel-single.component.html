@@ -1,0 +1,229 @@
+<div class="main-wrapper">
+  <div class="section exvent-hero-section d-lg-flex d-block align-items-center inner-page-hero"
+    [style.backgroundImage]="'url(' + (hotel?.pictureList?.[0] || '') + ')'">
+
+    <div class="container">
+      <div class="row exvent-hero-row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <div class="page-title">
+            <h2 class="section-title">{{ hotel?.name }}</h2>
+          </div>
+          <div class="page-navigation">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb justify-content-center" style="    background-color: transparent !important;">
+                <li class="breadcrumb-item"><a href="index.html">Hotels</a></li>
+                <li class="breadcrumb-item"><a href="event-single.html">{{ hotel?.name }}</a></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="event-single-page section-padding-02">
+    <div class="container">
+      <div class="row justify-content-between gx-5">
+        <div class="col-lg-8">
+          <div class="single-event">
+            <div class="event-header">
+              <h4 class="event-title">{{ hotel?.name }}</h4>
+
+              <div class="gallery-item">
+                <div class="image-box">
+                  <figure><img [src]="hotel?.pictureList[1]" alt=""></figure>
+                  <div class="overlay-box"><a href="{{hotel?.pictureList[1]}}" class="lightbox-image"
+                      data-fancybox="gallery"><span class="icon fa fa-expand-arrows-alt"></span></a></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="event-body">
+              <h5 class="event-title">Description</h5>
+              <p class="text">{{ hotel?.description }}</p>
+            </div>
+          </div>
+          <div class="comments-area">
+
+            <div class="group-title">
+
+              <h3>Comments 02</h3>
+
+            </div>
+
+            <div class="comment-box">
+
+              <div class="comment">
+
+                <div class="author-thumb"><img src="images/resource/thumb-1.jpg" alt=""></div>
+
+                <div class="comment-info">
+
+                  <div class="name">Kavin smith</div> -
+
+                  <div class="date">CEO CHI ART PRO</div>
+
+                </div>
+
+                <div class="text">Vestibulum imperdiet nibh vel magna lacinia ultrices. Sed id interdum urna. Nam ac
+                  elit a ante commodo tristique. Duis lacus urna, condimentum a vehiculaa,Duis lacus </div>
+
+                <a href="#" class="reply-btn theme-btn btn-style-one"><span class="btn-title">Reply</span></a>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="comment-box">
+
+              <div class="comment">
+
+                <div class="author-thumb"><img src="images/resource/thumb-2.jpg" alt=""></div>
+
+                <div class="comment-info">
+
+                  <div class="name">Lean Guimares</div> -
+
+                  <div class="date">CEO CHI ART PRO</div>
+
+                </div>
+
+                <div class="text">Codswallop down the pub Queen's English tomfoolery the BBC owt to do with me do one
+                  Elizabeth I don't want no agro show off show?</div>
+
+                <a href="#" class="reply-btn theme-btn btn-style-one"><span class="btn-title">Reply</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="comment-form">
+
+            <div class="group-title">
+
+              <h3>Leave a comment</h3>
+
+            </div>
+
+            <form method="post" action="blog.html">
+
+              <div class="row clearfix">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+
+                  <input type="text" name="username" placeholder="Name" required="">
+
+                </div>
+
+
+
+                <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+
+                  <input type="email" name="email" placeholder="Email" required="">
+
+                </div>
+
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+
+                  <textarea name="message" placeholder="Your Comments"></textarea>
+
+                </div>
+
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+
+                  <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="btn-title">Post
+                      Comment</span></button>
+
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="exvent-sidebar">
+            <div class="sidebar-widget sidebar-widget-no-margin">
+              <form class="search-form" action="#">
+                <input type="text" placeholder="Search">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </form>
+            </div>
+            <div class="sidebar-widget">
+              <div class="event-price-details">
+                <!--                   <div class="price">
+                    <h3><sup>$</sup>{{ hotel?.price }}</h3>
+                  </div> -->
+                <div class="purchase-button">
+                  <a class="theme-btn btn-style-one" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                  ></a>
+                </div>
+                <div class="all-details">
+                  <h4 class="title">Details</h4>
+                  <div class="single-details">
+                    <div class="label">Location :</div>
+                    <p class="details"><!-- {{ hotel?.location }} --></p>
+                  </div>
+                  <div class="single-details">
+                    <div class="label">Amenities :</div>
+                    <p class="details">{{ hotel?.amenities }} </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar-widget">
+              <div class="widget-title">
+                <h4>Location Map</h4>
+              </div>
+              <div class="sidebar-google-map">
+                <iframe *ngIf="safeLocation" [src]="safeLocation" loading="lazy"></iframe>
+              </div>
+
+
+            </div>
+            <div class="sidebar-widget popular-tags">
+
+              <h4 class="sidebar-title">Tags</h4>
+
+              <div class="widget-content">
+
+                  <a href="#">Event</a>
+
+                  <a href="#">Meetup</a>
+
+                  <a href="#">Conference</a>
+
+                  <a href="#">Meeting</a>
+
+                  <a href="#">Business</a>
+
+                  <a href="#">Seminar</a>
+
+                  <a href="#">Workshop</a>
+
+                  <a href="#">Professionals</a>
+
+                  <a href="#">Eventa</a>
+
+              </div>
+
+          </div>
+          </div>
+        </div>
+        <!-- Sidebar Ends -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-booking-modal class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel"
+  aria-hidden="true" [hotel]="hotelId"></app-booking-modal>

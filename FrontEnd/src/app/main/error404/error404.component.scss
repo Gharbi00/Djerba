@@ -1,0 +1,412 @@
+/*! CSS Used from: https://expert-themes.com/html/eventrox/css/bootstrap.css */
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+section {
+    display: block;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+h4 {
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+@media print {
+
+    *,
+    ::after,
+    ::before {
+        text-shadow: none !important;
+        box-shadow: none !important;
+    }
+
+    a:not(.btn) {
+        text-decoration: underline;
+    }
+}
+
+/*! CSS Used from: https://expert-themes.com/html/eventrox/css/style.css */
+/*! @import https://expert-themes.com/html/eventrox/css/animate.css */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+/*! end @import */
+* {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #f20487;
+}
+
+a:hover,
+a:focus,
+a:visited {
+    text-decoration: none;
+    outline: none !important;
+}
+
+h4 {
+    position: relative;
+    font-weight: normal;
+    margin: 0px;
+    background: none;
+    line-height: 1.6em;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.text {
+    position: relative;
+    font-size: 16px;
+    line-height: 26px;
+    color: #888888;
+    font-weight: 400;
+}
+
+.auto-container {
+    position: static;
+    max-width: 1200px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+.theme-btn {
+    display: inline-block;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+::selection {
+    background: #ec167f;
+    color: #ffffff;
+}
+
+.theme-btn {
+    position: relative;
+    transition: all 300ms ease;
+}
+
+.btn-style-two {
+    position: relative;
+    padding: 10px 30px;
+    font-size: 16px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    background-color: #faaC1D;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.btn-style-two .btn-title {
+    position: relative;
+}
+
+.btn-style-two:hover {
+    color: #faaC1D;
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -ms-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -o-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+.btn-style-two:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: #ffffff;
+    -webkit-transform: scale(0, 1);
+    -ms-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+    -webkit-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -moz-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -o-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -webkit-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -moz-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -o-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+
+.btn-style-two:hover:before {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    -webkit-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    transform-origin: bottom left;
+}
+
+.btn-style-three {
+    position: relative;
+    padding: 10px 30px;
+    font-size: 16px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    background-color: #1c94d2;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.btn-style-three .btn-title {
+    position: relative;
+}
+
+.btn-style-three:hover {
+    color: #1c94d2;
+    -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -moz-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -ms-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    -o-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+.btn-style-three:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: #ffffff;
+    -webkit-transform: scale(0, 1);
+    -ms-transform: scale(0, 1);
+    transform: scale(0, 1);
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+    -webkit-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -moz-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -o-transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    transition: transform 500ms cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -webkit-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -moz-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    -o-transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+    transition-timing-function: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+}
+
+.btn-style-three:hover:before {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+    -webkit-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    transform-origin: bottom left;
+}
+
+.anim-icons {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+}
+
+.anim-icons.full-width {
+    max-width: 100%;
+}
+
+.anim-icons .icon {
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.icon-line-1 {
+    width: 128px;
+    height: 128px;
+    background-image: url(https://expert-themes.com/html/eventrox/images/icons/icon-line-1.png);
+}
+
+.icon-dots {
+    width: 72px;
+    height: 60px;
+    background-image: url(https://expert-themes.com/html/eventrox/images/icons/icon-dots.png);
+}
+
+.icon-circle-1 {
+    width: 500px;
+    height: 500px;
+    background-image: url(https://expert-themes.com/html/eventrox/images/icons/icon-circle-1.png);
+    background-size: 100%;
+}
+
+.icon-circle-blue {
+    width: 300px;
+    height: 300px;
+    background-image: url(https://expert-themes.com/html/eventrox/images/icons/circle-blue.png);
+}
+
+.error-section {
+    position: relative;
+    text-align: center;
+    padding: 150px 0px;
+}
+
+.error-section:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(https://expert-themes.com/html/eventrox/images/icons/pattern-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    content: "";
+    opacity: .05;
+}
+
+.error-section .error-title {
+    position: relative;
+    color: #ec167f;
+    font-size: 200px;
+    font-weight: 700;
+    line-height: 1em;
+    text-shadow: 0 20px 30px rgba(0, 0, 0, 0.20);
+}
+
+.error-section h4 {
+    color: #394963;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.error-section .text {
+    color: #888888;
+    font-size: 22px;
+    line-height: 1.4em;
+    margin-bottom: 30px;
+}
+
+.error-section .theme-btn {
+    border-radius: 5px;
+    font-weight: 500;
+    margin: 0 10px 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+}
+
+.error-section .icon-circle-blue {
+    left: -80px;
+    bottom: -80px;
+    opacity: .70;
+    -webkit-animation: fa-spin 30s infinite alternate;
+    -moz-animation: fa-spin 30s infinite alternate;
+    -ms-animation: fa-spin 30s infinite alternate;
+    -o-animation: fa-spin 30s infinite alternate;
+    animation: fa-spin 30s infinite alternate;
+}
+
+.error-section .icon-dots {
+    left: 15%;
+    top: 20%;
+}
+
+.error-section .icon-line-1 {
+    right: 15%;
+    bottom: 20%;
+    opacity: .70;
+    -webkit-animation: fa-spin 30s infinite alternate;
+    -moz-animation: fa-spin 30s infinite alternate;
+    -ms-animation: fa-spin 30s infinite alternate;
+    -o-animation: fa-spin 30s infinite alternate;
+    animation: fa-spin 30s infinite alternate;
+}
+
+.error-section .icon-circle-1 {
+    right: -200px;
+    top: -200px;
+    opacity: .20;
+}
+
+/*! CSS Used from: https://expert-themes.com/html/eventrox/css/responsive.css */
+@media only screen and (max-width: 1023px) {
+    .error-section .icon-line-1 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .error-section {
+        padding: 70px 0;
+    }
+
+    .error-section .anim-icons {
+        display: none;
+    }
+
+    .error-section .error-title {
+        font-size: 120px;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .error-section h4 {
+        font-size: 34px;
+        line-height: 1.2em;
+    }
+}
+

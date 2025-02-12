@@ -1,0 +1,192 @@
+/*! CSS Used from: https://thepixelcurve.com/html/exvent/dest/assets/css/plugins/all.min.css */
+.fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.fa-angle-left:before {
+    content: "\f104";
+}
+
+.fa-angle-right:before {
+    content: "\f105";
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free";
+}
+
+.fas {
+    font-weight: 900;
+}
+
+/*! CSS Used from: https://thepixelcurve.com/html/exvent/dest/assets/css/plugins/bootstrap.min.css */
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+ul {
+    padding-left: 2rem;
+}
+
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #0d6efd;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #0a58ca;
+}
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    color: #0d6efd;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+@media (prefers-reduced-motion:reduce) {
+    .page-link {
+        transition: none;
+    }
+}
+
+.page-link:hover {
+    z-index: 2;
+    color: #0a58ca;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-link:focus {
+    z-index: 3;
+    color: #0a58ca;
+    background-color: #e9ecef;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25);
+}
+
+.page-item:not(:first-child) .page-link {
+    margin-left: -1px;
+}
+
+.page-link {
+    padding: .375rem .75rem;
+}
+
+.page-item:first-child .page-link {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+/*! CSS Used from: https://thepixelcurve.com/html/exvent/dest/assets/css/style.css */
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: inherit;
+    display: inline-block;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a {
+    transition: all 0.3s linear;
+    outline: 0;
+}
+
+a:focus {
+    outline: 0;
+}
+
+a:focus {
+    color: none;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fc097c;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+ .blog-pagination {
+    margin-top: 70px;
+}
+
+ .blog-pagination .pagination .page-item .page-link {
+    border: none;
+    color: #1a0a1e;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 100%;
+    text-align: center;
+    margin: 0 2px;
+}
+
+ .blog-pagination .pagination .page-item .page-link:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #ffae4a;
+    color: #ffffff;
+}
+
+ .blog-pagination .pagination .page-item .page-link:hover {
+    background-color: #ffae4a!important;
+    color: #ffffff!important;
+}
+
+ :host::ng-deep .page-item.active .page-link {
+    background-color: #ffae4a!important;
+    color: #ffffff!important;
+}
+
+ .blog-pagination .pagination .page-item .page-link.arrow {
+    background-color: transparent;
+    color: #8d8d8d;
+}

@@ -1,0 +1,39 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HotelService } from '../../../admin/hotel/hotel.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-hotel-single',
+  templateUrl: './hotel-single.component.html',
+  styleUrl: './hotel-single.component.scss'
+})
+export class HotelSingleComponent implements OnInit {
+  hotel: any = null;
+  hotelId :any;
+  safeLocation!: SafeResourceUrl;
+  constructor(
+    private route: ActivatedRoute,
+    private hotelService: HotelService,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit(): void {
+   this.hotelId = this.route.snapshot.paramMap.get('id'); // Get the hotel ID from the route
+    if (this.hotelId) {
+      this.hotelService.getHotelById(this.hotelId).subscribe(
+        (data) => {
+          this.hotel = data;
+        },
+        (error) => {
+          console.error('Error fetching hotel data:', error);
+        }
+      );
+    }
+    if (this.hotel?.location && typeof this.hotel.location === 'string') {
+      this.safeLocation = this.sanitizer.bypassSecurityTrustResourceUrl(this.hotel.location);
+    } else {
+      console.error("Invalid location URL:", this.hotel?.location);
+    }
+  }
+}

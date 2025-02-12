@@ -1,0 +1,148 @@
+
+  <header class="main-header" [class.fixed-header]="scrollDetector" [class.mobile-menu-visible]="megaMenuCollapsed">
+
+    <div class="main-box">
+
+      <div class="auto-container clearfix">
+
+          <div class="logo-box">
+
+              <div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title=""></a></div>
+
+            </div>
+
+             
+
+
+            <div class="nav-outer clearfix">
+
+                <div class="mobile-nav-toggler" (click)="toggleCollapseMegaMenu()" type="button"><span class="icon flaticon-menu"></span></div>
+                <button
+                        class="login-togler"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      >
+                        <span class="btn-title"><i class="fa fa-user"></i> Login</span>
+                      </button>
+                <nav class="main-menu navbar-expand-md navbar-light">
+
+                    <div class="navbar-header">
+
+                        <!-- Togg le Button -->      
+
+                        <button class="navbar-toggler"  data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                            <span class="icon flaticon-menu-button"></span>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+
+                      <ul class="navigation clearfix">
+                        <li><a routerLink="/blog">Blog</a></li>
+                        
+                        <li class="dropdown">
+                          <a routerLink="/hotels">Pages</a>
+                          <ul>
+                            <li><a routerLink="/hotels">Hotels</a></li>
+                            <li><a routerLink="/restaurants">Restaurants</a></li>
+                            <li><a routerLink="/activities">Activities</a></li>
+                            <li><a routerLink="/sites">Sites</a></li>
+                            <li><a routerLink="/">Coming Soon</a></li>
+                          </ul>
+                          <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+                        </li>
+                        <li><a routerLink="/about">About</a></li>
+                        <li><a routerLink="/contact">Contact</a></li>
+                      </ul>
+
+                    </div>
+
+                </nav>
+
+
+                <div class="outer-box">
+
+                    <div class="search-box-outer">
+
+                        <div class="search-box-btn" (click)="toggleSearch()"><span class="flaticon-search"></span></div>
+
+                    </div>
+
+                    <div class="btn-box">
+                      <button
+                        class="theme-btn btn-style-one" *ngIf="!authToken"
+                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                      >
+                        <span class="btn-title"><i class="fa fa-user"></i> Login</span>
+                      </button>
+                    </div>
+                    <button
+                    class="theme-btn btn-style-one"
+                    *ngIf="authToken"
+                    (click)="logout()"
+                  >
+                    <span class="btn-title">
+                      <i class="fa fa-user"></i> Logout
+                    </span>
+                  </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Mobile Menu  -->
+
+    <div class="mobile-menu">
+
+        <div class="menu-backdrop"></div>
+
+        <div class="close-btn" ><span class="icon flaticon-cancel-1"></span></div>
+
+      
+        <nav class="menu-box">
+
+            <div class="nav-logo"><a href="index.html"><img src="images/logo-2.png" alt="" title=""></a></div>
+
+            
+
+            <ul class="navigation clearfix">
+              <li><a routerLink="/blog">Blog</a></li>
+              
+              <li class="dropdown" [class.active]="isDropdownOpen">
+                <a  (click)="toggleDropdown()">Pages</a>
+                <ul  [class.displayed]="isDropdownOpen">
+                  <li><a routerLink="/hotels" routerLinkActive="active">Hotels</a></li>
+                  <li><a routerLink="/restaurants" routerLinkActive="active">Restaurants</a></li>
+                  <li><a routerLink="/activities" routerLinkActive="active">Activities</a></li>
+                  <li><a routerLink="/sites" routerLinkActive="active">Sites</a></li>
+                  <li><a routerLink="/" routerLinkActive="active">Coming Soon</a></li>
+                </ul>
+                <div class="dropdown-btn" (click)="toggleDropdown()">
+                  <span class="fa fa-angle-down"></span>
+                </div>
+              </li>
+              
+              <li><a routerLink="/about">About</a></li>
+              <li><a routerLink="/contact">Contact</a></li>
+            </ul>
+
+        </nav>
+
+    <div class="close-btn" (click)="toggleCollapseMegaMenu()"  type="button"><span class="icon flaticon-cancel-music"></span></div></div><!-- End Mobile Menu -->
+
+
+
+</header>
+
+  
+<app-auth class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></app-auth>
+<app-search id="search-popup" class="search-popup" [class.popup-visible]="searchToggler"></app-search>

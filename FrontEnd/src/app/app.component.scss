@@ -1,0 +1,144 @@
+.progress-wrap {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 47px;
+    height: 47px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.progress-circle {
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke: #4caf50;
+    stroke-width: 6;
+    fill: none;
+}
+
+.progress-wrap.active-progress {
+    visibility: visible;
+    opacity: 1;
+}
+
+.progress-wrap:not(.active-progress) {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.progress-wrap::after {
+    position: absolute;
+    content: "\f171";
+    font-family: flaticon !important;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    color: #fc097c;
+    left: 0;
+    top: 0;
+    height: 46px;
+    width: 46px;
+    transform: rotate(0deg);
+    cursor: pointer;
+    display: block;
+    z-index: 1;
+}
+
+.progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.progress-wrap {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 2px rgba(0, 93, 224, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(130%);
+    z-index: 99;
+    transition: all 200ms linear;
+}
+
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
+
+svg {
+    vertical-align: middle;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.progress-wrap {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    display: block;
+    border-radius: 50px;
+    box-shadow: inset 0 0 0 2px rgba(0, 93, 224, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(130%);
+    z-index: 99;
+    transition: all 200ms linear;
+}
+
+.progress-wrap::after {
+    position: absolute;
+    content: "\f171";
+    font-family: flaticon !important;
+    text-align: center;
+    line-height: 45px;
+    font-size: 18px;
+    color: #2ad3a4;
+    left: 0;
+    top: 0;
+    height: 46px;
+    width: 46px;
+    transform: rotate(0deg);
+    cursor: pointer;
+    display: block;
+    z-index: 1;
+}
+
+.progress-wrap svg path {
+    fill: none;
+}
+
+.progress-wrap svg.progress-circle path {
+    stroke: #2ad3a4;
+    stroke-width: 6;
+    box-sizing: border-box;
+}
+
+.progress-wrap.active-progress {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+:host::ng-deep.font-special
+{   
+    font-family: 'Montserrat', sans-serif;
+
+    
+}

@@ -1,0 +1,207 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content hero-form mt-0 grey-bg">
+    <div class="modal-body">
+      <ul class="nav nav-tabs" id="loginRegisterTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="login-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#login"
+            type="button"
+            role="tab"
+            aria-controls="login"
+            aria-selected="true"
+          >
+            Login
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="register-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#register"
+            type="button"
+            role="tab"
+            aria-controls="register"
+            aria-selected="false"
+          >
+            Register
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content -->
+      <div class="tab-content" id="loginRegisterTabContent">
+        <!-- Login Tab -->
+        <div
+          class="tab-pane fade show active"
+          id="login"
+          role="tabpanel"
+          aria-labelledby="login-tab"
+        >
+          <div class="row justify-content-center g-5">
+            <div>
+              <h3 class="form-title black">Login</h3>
+              <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                <div class="row gy-4">
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        formControlName="email"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        formControlName="password"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        formControlName="rememberMe"
+                        id="rememberMe"
+                      />
+                      <label class="form-check-label" for="rememberMe">Remember Me</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-5 text-center">
+                    <button type="submit" class="submit_btn">Log in</button>
+                  </div>
+                  <div class="col-12">
+                    <a
+                      href="javascript:void(0);"
+                      (click)="onForgotPassword()"
+                      class="forgot-pass"
+                    >Forgot your password?</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Register Tab -->
+        <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+          <div class="row justify-content-center g-5">
+            <div>
+              <h3 class="form-title black">Register</h3>
+              <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+                <div class="row gy-4">
+                  <!-- First Name -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="text"
+                        placeholder="First Name"
+                        formControlName="firstName"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Last Name -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="text"
+                        placeholder="Last Name"
+                        formControlName="lastName"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Username -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="text"
+                        placeholder="Username"
+                        formControlName="userName"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Email -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="email"
+                        placeholder="Email"
+                        formControlName="email"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Password -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        formControlName="password"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Confirm Password -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="password"
+                        placeholder="Confirm Password"
+                        formControlName="confirmPassword"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Nationality -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="text"
+                        placeholder="Nationality"
+                        formControlName="nationality"
+                      />
+                    </div>
+                  </div>
+              
+                  <!-- Photo -->
+                  <div class="col-12">
+                    <div class="single-input white-bg">
+                      <input
+                        type="text"
+                        placeholder="Photo URL"
+                        formControlName="photo"
+                      />
+                    </div>
+                  </div>
+              
+
+              
+                  <!-- Submit Button -->
+                  <div class="col-sm-5 text-center">
+                    <button type="submit" class="submit_btn">Register</button>
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
