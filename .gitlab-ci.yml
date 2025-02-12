@@ -9,7 +9,7 @@ cache:
 
 build:
   stage: build
-  image: node:18.20.5 # Use Node.js version 18.20.5
+  image: node:18.20.5
   services:
     - name: mysql:8.0
       alias: mysql
@@ -19,31 +19,28 @@ build:
     MYSQL_PASSWORD: Gharbix23*
     MYSQL_ROOT_PASSWORD: Gharbix23*
   script:
-    # Install Java 21 and necessary tools for backend
     - echo "Installing Java 21..."
-    - apt-get update
-    - apt-get install -y openjdk-21
+    - apt-get update && apt-get install -y openjdk-21
     - java -version
 
-    # Install Node.js dependencies for frontend
     - echo "Installing Node.js dependencies..."
     - cd FrontEnd
-    - npm ci --legacy-peer-deps  # Use --legacy-peer-deps to resolve dependency issues
+    - npm ci --legacy-peer-deps
     - npm run build --prod
+    - cd ..
 
-    # Backend build
     - echo "Building Backend..."
-    - apt-get update
-    - apt-get install -y default-mysql-client # Correct package for MySQL client
+    - apt-get update && apt-get install -y default-mysql-client
     - echo "Waiting for MySQL to be ready..."
     - until mysqladmin ping -h mysql --silent; do sleep 1; done
-    - cd ../BackEnd
+    - cd BackEnd
     - mvn clean package
+    - cd ..
+
   artifacts:
     paths:
       - FrontEnd/dist/
       - BackEnd/target/*.jar
-
 deploy:
   image: node:18.20.5 # Use Node.js version 18.20.5 for the deploy stage
   stage: deploy
@@ -63,9 +60,8 @@ deploy:
     - echo "Deploying Backend..."
     - cd ../BackEnd
     - java -jar target/*.jar
-    - echo "Backend running at: http://localhost:8080"
     - curl -s http://localhost:8080 || { echo "Backend failed to start!"; exit 1; }
-    - echo "Frontend running at: http://localhost:4200"
+    
 
   environment:
     name: production
