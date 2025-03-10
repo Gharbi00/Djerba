@@ -1,8 +1,7 @@
 <section class="hero-wrap hero-wrap-2 js-fullheight"
-  style="background-image: url(&quot;images/bg_1.jpg&quot;); height: 806px;">
-  <div class="overlay"></div>
+  style="background-image: url(&quot;images/bg_1.jpg&quot;);">
   <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center" style="height: 326px;">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center" >
       <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
                 class="fa fa-chevron-right"></i></a></span> <span>Hotel <i class="fa fa-chevron-right"></i></span></p>
@@ -127,7 +126,6 @@
                 </ul>
               </div>
       
-              <!-- Show Existing Ratings -->
               <div *ngIf="hotel.ratings && hotel.ratings.length > 0">
                 <h4>Ratings:</h4>
                 <div class="rating">
@@ -137,18 +135,17 @@
               </div>
       
               <!-- Add New Review -->
-              <div>
+<!--               <div>
                 <h4>Add a Review</h4>
                 <textarea [(ngModel)]="reviewText" placeholder="Write your review here"></textarea>
                 <button (click)="submitReview(hotel.id)">Submit Review</button>
               </div>
       
-              <!-- Add New Rating -->
               <div>
                 <h4>Add Rating</h4>
                 <input type="number" [(ngModel)]="ratingScore" min="1" max="5" placeholder="Rate 1-5">
                 <button (click)="submitRating(hotel.id)">Submit Rating</button>
-              </div>
+              </div> -->
       
               <div class="btn-box">
                 <a [routerLink]="'/hotels/' + hotel.id" class="theme-btn btn-style-one">

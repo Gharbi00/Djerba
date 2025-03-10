@@ -153,9 +153,7 @@ html [type=button] {
 	text-rendering: auto !important;
 }
 
-.fa-angle-down:before {
-	content: "\f107" !important;
-}
+
 
 .fa {
 	font-family: 'Font Awesome 5 Free' !important;
@@ -173,7 +171,7 @@ html [type=button] {
 }
 
 .flaticon-search:before {
-	content: "\f107" !important;
+	content: none !important;
 }
 
 .flaticon-cancel-music:before {
