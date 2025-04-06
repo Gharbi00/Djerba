@@ -2,25 +2,20 @@ package com.example.BackEnd.dto;
 
 import com.example.BackEnd.entity.Rating;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class RatingDTO {
-    private Long productId;
+
     private Long userId;
-    private int score; // Rating value (e.g., 1 to 5)
-
-    // Default constructor
-    public RatingDTO() {
-    }
-
-    // Constructor to convert Rating to RatingDTO (optional)
-    public RatingDTO(Rating rating) {
-        this.productId = rating.getProduct().getId();
-        this.userId = rating.getUser().getId();
-        this.score = rating.getScore();
-    }
+    private Long productId;
+    private String productType;
+    private int score;
 }
+

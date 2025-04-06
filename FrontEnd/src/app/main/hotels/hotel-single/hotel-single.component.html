@@ -1,25 +1,18 @@
 <div class="main-wrapper">
-  <div class="section exvent-hero-section d-lg-flex d-block align-items-center inner-page-hero"
-    [style.backgroundImage]="'url(' + (hotel?.pictureList?.[0] || '') + ')'">
-
+  <section class="hero-wrap hero-wrap-2 js-fullheight" [style.backgroundImage]="'url(' + (hotel?.pictureList?.[0] || '') + ')'">
+    <div class="overlay"></div>
+  
     <div class="container">
-      <div class="row exvent-hero-row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <div class="page-title">
-            <h2 class="section-title">{{ hotel?.name }}</h2>
-          </div>
-          <div class="page-navigation">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb justify-content-center" style="    background-color: transparent !important;">
-                <li class="breadcrumb-item"><a href="index.html">Hotels</a></li>
-                <li class="breadcrumb-item"><a href="event-single.html">{{ hotel?.name }}</a></li>
-              </ol>
-            </nav>
-          </div>
+      <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+        <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
+          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Hotels <i
+                  class="fa fa-chevron-right"></i></a></span> <span>Hotels <i class="fa fa-chevron-right"></i></span></p>
+          <h1 class="mb-0 bread">{{ hotel?.name }}</h1>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
 
   <div class="event-single-page section-padding-02">
     <div class="container">

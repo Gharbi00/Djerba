@@ -29,8 +29,8 @@ public class HotelDTO {
 
     public HotelDTO(Long id, String name, String location, String description, List<String> pictureList,
                     long phoneNumber, String amenities, int starsNumber, int availablePlaces,
-                    List<Float> offersPrices, float babiesDiscount, float childrenDiscount, float teenDiscount,
-                    List<Rating> ratings, List<Review> reviews) {
+                    List<Float> offersPrices, float babiesDiscount, float childrenDiscount, float teenDiscount
+                    /* List<Rating> ratings, List<Review> reviews */) {
         this.id = id;
         this.name = name;
         this.location = location;
@@ -44,7 +44,7 @@ public class HotelDTO {
         this.babiesDiscount = babiesDiscount;
         this.childrenDiscount = childrenDiscount;
         this.teenDiscount = teenDiscount;
-        this.ratings = ratings;
-        this.reviews = reviews;
+       // this.ratings = ratings;
+       // this.reviews = reviews;
     }
 }

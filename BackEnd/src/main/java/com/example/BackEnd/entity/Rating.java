@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Entity
 @Getter
 @Setter
@@ -15,24 +16,15 @@ public class Rating {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "product_id")
+    private Product product; 
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private int score; // Rating value (e.g., 1 to 5)
+    private int score;
 
-    // Ensure uniqueness of rating per user and product
-    @Column(unique = true)
-    private String uniqueKey;
-
-    @PrePersist
-    @PreUpdate
-    private void setUniqueKey() {
-        this.uniqueKey = user.getId() + "_" + product.getId();
-    }
-
-    // Getters and Setters
+    private String productType;  
+    
 }

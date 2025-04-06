@@ -1,7 +1,8 @@
-<section class="hero-wrap hero-wrap-2 js-fullheight"
-  style="background-image: url(&quot;images/bg_1.jpg&quot;);">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(&quot;images/bg_1.jpg&quot;);">
+  <div class="overlay"></div>
+
   <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center" >
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
       <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
         <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i
                 class="fa fa-chevron-right"></i></a></span> <span>Hotel <i class="fa fa-chevron-right"></i></span></p>
@@ -89,127 +90,151 @@
 <section class="ftco-section">
   <div class="container">
 
-
     <div class="row">
-      <div *ngFor="let hotel of getSlice(); let i = index">
-        <div class="col-md-12 aos-init aos-animate margin-bottom" *ngIf="i % 2 === 0" data-aos="fade-up"
-          data-aos-delay="100" data-aos-duration="500" data-aos-easing="ease-in">
-          <div class="single-blog">
-            <div class="col-md-4" style="padding-left: 0px!important; padding-right: 0px!important;">
-              <owl-carousel-o [options]="carouselOptions">
-                <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
-                  <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
-                    style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
-                  </div>
-                </ng-template>
-              </owl-carousel-o>
-            </div>
-      
-            <div class="part-text col-md-8">
-              <div style="display: flex;">
-                <span class="post-category">{{ hotel.name }}</span>
-                <div class="rating">
-                  <span class="fa fa-star" *ngFor="let star of [].constructor(hotel.starsNumber); let i = index"
-                    [ngClass]="{ 'checked': i < hotel.starsNumber }"> </span>
-                </div>
-              </div>
-      
-              <p>{{ hotel.description }}</p>
-      
-              <!-- Show Existing Reviews -->
-              <div *ngIf="hotel.reviews && hotel.reviews.length > 0">
-                <h4>Reviews:</h4>
-                <ul>
-                  <li *ngFor="let review of hotel.reviews">
-                    <strong>{{ review.title }}:</strong> {{ review.comment }}
-                  </li>
-                </ul>
-              </div>
-      
-              <div *ngIf="hotel.ratings && hotel.ratings.length > 0">
-                <h4>Ratings:</h4>
-                <div class="rating">
-                  <span *ngFor="let star of [].constructor(hotel.ratings[0].score); let i = index"
-                    class="fa fa-star checked"></span>
-                </div>
-              </div>
-      
-              <!-- Add New Review -->
-<!--               <div>
-                <h4>Add a Review</h4>
-                <textarea [(ngModel)]="reviewText" placeholder="Write your review here"></textarea>
-                <button (click)="submitReview(hotel.id)">Submit Review</button>
-              </div>
-      
-              <div>
-                <h4>Add Rating</h4>
-                <input type="number" [(ngModel)]="ratingScore" min="1" max="5" placeholder="Rate 1-5">
-                <button (click)="submitRating(hotel.id)">Submit Rating</button>
-              </div> -->
-      
-              <div class="btn-box">
-                <a [routerLink]="'/hotels/' + hotel.id" class="theme-btn btn-style-one">
-                  <span class="btn-title">View Hotel</span>
-                </a>
-                <a [routerLink]="'/add-comment/' + hotel.id" class="theme-btn btn-style-one">
-                  <span class="btn-title">Add Comment</span>
-                </a>
-                <a class="theme-btn btn-style-one" data-bs-toggle="modal" data-bs-target="#bookingModal"
-                  (click)="setSelectedHotel(hotel)">
-                  <span class="btn-title">Book Hotel</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-        <div *ngIf="i % 2 !== 0" class="aos-init aos-animate margin-bottom" data-aos="fade-up" data-aos-delay="150"
-          data-aos-duration="500" data-aos-easing="ease-in">
-          <div class="single-blog right-sided-img">
-            <div class="part-text col-md-8">
-              <div style="display: flex;">
-                <span class="post-category">{{ hotel.name }}</span>
-                <div class="rating">
-                  <span class="fa fa-star" *ngFor="let star of [].constructor(hotel.starsNumber); let i = index"
-                    [ngClass]="{ 'checked': i < hotel.starsNumber }"> </span>
-                </div>
-              </div>
-      
-              <p>{{ hotel.description }}</p>
-      
-              <div class="btn-box">
-                <a [routerLink]="'/hotels/' + hotel.id" class="theme-btn btn-style-one">
-                  <span class="btn-title">View Hotel</span>
-                </a>
-                <a [routerLink]="'/add-comment/' + hotel.id" class="theme-btn btn-style-one">
-                  <span class="btn-title">Add Comment</span>
-                </a>
-                <a class="theme-btn btn-style-one" data-bs-toggle="modal" data-bs-target="#bookingModal"
-                  (click)="setSelectedHotel(hotel)">
-                  <span class="btn-title">Book Hotel</span>
-                </a>
-              </div>
-            </div>
-      
-            <div class="col-md-4" style="padding-left: 0px!important; padding-right: 0px!important;">
-              <owl-carousel-o [options]="carouselOptions">
-                <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
-                  <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
-                    style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
-                  </div>
-                </ng-template>
-              </owl-carousel-o>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-2">
+        <app-side-bar pageType="restaurants"></app-side-bar>
       </div>
-      
+      <div class="row col-md-10">
+
+        <div class="showing-product">
+          <p>Showing 1–9 of 55 results</p>
+        </div>
 
 
-      <app-pagination [perPage]="perPage" [baseRoute]="'/hotels'" [total]="quantity"></app-pagination>
+        <div *ngFor="let hotel of getSlice(); let i = index">
+          <!-- Left-side Hotel Card (i % 2 === 0) -->
+          <div class="col-md-12 aos-init aos-animate margin-bottom" *ngIf="i % 2 === 0" data-aos="fade-up"
+            data-aos-delay="100" data-aos-duration="500" data-aos-easing="ease-in">
+            <div class="single-blog">
+              <div class="col-md-5" style="padding-left: 0px!important; padding-right: 0px!important;">
+                <span class="price">$550/person</span>
+                <owl-carousel-o [options]="carouselOptions">
+                  <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
+                    <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
+                      style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
+                    </div>
+                  </ng-template>
+                </owl-carousel-o>
+              </div>
+
+              <div class="part-text col-md-7">
+                <ng-container *ngIf="selectedHotelId != hotel.id">
+                  <div style="display: flex;">
+                    <h3><a [routerLink]="'/hotels/' + hotel.id" style="text-transform:capitalize ;">{{ hotel.name }}</a>
+                    </h3>
+                    <div class="rating">
+                      <span class="fa fa-star" *ngFor="let star of [].constructor(hotel.starsNumber); let i = index"
+                        [ngClass]="{ 'checked': i < hotel.starsNumber }"></span>
+                    </div>
+                  </div>
+
+                  <p>{{ hotel.description }}</p>
+
+                  <!-- Show Existing Reviews -->
+                  <div *ngIf="hotel.reviews && hotel.reviews.length > 0">
+                    <h4>Reviews:</h4>
+                    <ul>
+                      <li *ngFor="let review of hotel.reviews">
+                        <strong>{{ review.title }}:</strong> {{ review.comment }}
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div *ngIf="hotel.ratings && hotel.ratings.length > 0">
+                    <h4>Ratings:</h4>
+                    <div class="rating">
+                      <span *ngFor="let star of [].constructor(hotel.ratings[0].score); let i = index"
+                        class="fa fa-star checked"></span>
+                    </div>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="btn-box">
+                    <a [routerLink]="'/hotels/' + hotel.id" class="theme-btn btn-style-one view-btn">
+                      <span class="btn-title">View Hotel</span>
+                    </a>
+                    <a class="theme-btn btn-style-one" (click)="toggleCommentBox(hotel.id)">
+                      <span class="btn-title">Add Comment</span>
+                    </a>
+                    <a class="theme-btn btn-style-one book-btn" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                      (click)="setSelectedHotel(hotel)">
+                      <span class="btn-title">Book Hotel</span>
+                    </a>
+                  </div>
+                </ng-container>
+
+                <!-- Comment Box (Appears after clicking "Add Comment") -->
+                <div *ngIf="selectedHotelId === hotel.id" class="comment-box" style="margin-top: 20px;">
+                  <textarea [(ngModel)]="commentText" placeholder="Write your comment here..."></textarea>
+                  <button class="theme-btn btn-style-one" (click)="submitComment(hotel.id)">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="i % 2 !== 0" class="aos-init aos-animate margin-bottom" data-aos="fade-up" data-aos-delay="150"
+            data-aos-duration="500" data-aos-easing="ease-in">
+            <div class="single-blog right-sided-img">
+              <div class="part-text col-md-7">
+
+                <ng-container *ngIf="selectedHotelId != hotel.id">
+                  <div style="display: flex;">
+                    <h3><a [routerLink]="'/hotels/' + hotel.id" style="text-transform:capitalize ;">{{ hotel.name }}</a>
+                    </h3>
+                    <div class="rating">
+                      <span class="fa fa-star" *ngFor="let star of [].constructor(hotel.starsNumber); let i = index"
+                        [ngClass]="{ 'checked': i < hotel.starsNumber }"></span>
+                    </div>
+                  </div>
+
+                  <p>{{ hotel.description }}</p>
+
+                  <!-- Action Buttons -->
+                  <div class="btn-box">
+                    <a [routerLink]="'/hotels/' + hotel.id" class="theme-btn btn-style-one view-btn">
+                      <span class="btn-title">View Hotel</span>
+                    </a>
+                    <a class="theme-btn btn-style-one" (click)="toggleCommentBox(hotel.id)">
+                      <span class="btn-title">Add Comment</span>
+                    </a>
+                    <a class="theme-btn btn-style-one book-btn" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                      (click)="setSelectedHotel(hotel)">
+                      <span class="btn-title">Book Hotel</span>
+                    </a>
+                  </div>
+                </ng-container>
+                <div *ngIf="selectedHotelId === hotel.id" class="comment-box" style="margin-top: 20px;">
+                  <textarea [(ngModel)]="commentText" placeholder="Write your comment here..."></textarea>
+                  <button class="theme-btn btn-style-one" (click)="submitComment(hotel.id)">Submit</button>
+                </div>
+              </div>
+
+
+              <div class="col-md-5" style="padding-left: 0px!important; padding-right: 0px!important;">
+                <span class="price">$550/person</span>
+                <owl-carousel-o [options]="carouselOptions">
+                  <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
+                    <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
+                      style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
+                    </div>
+                  </ng-template>
+                </owl-carousel-o>
+              </div>
+
+              <!-- Comment Box for Right-Side (Appears after clicking "Add Comment") -->
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <app-pagination [perPage]="perPage" [baseRoute]="'/hotels'" [total]="quantity"></app-pagination>
+      </div>
+
     </div>
-
-
 
 
 
@@ -224,7 +249,7 @@
       <div class="text-center">
         <div class="img" style="background-image: url(images/bg_2.jpg);">
           <div class="overlay"></div>
-          <h2>We Are Pacific A Travel Agency</h2>
+          <h2>We Are GOJO A Travel Agency</h2>
           <p>We can manage your dream building A small river named Duden flows by their place</p>
           <p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Ask For A Quote</a></p>
         </div>

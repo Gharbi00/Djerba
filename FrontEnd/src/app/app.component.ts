@@ -1,8 +1,8 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AdminModule } from './admin/admin.module';
 import { HotelService } from './admin/hotel/hotel.service';
 import { NgxFileDropModule } from 'ngx-file-drop';
@@ -10,6 +10,7 @@ import { ActivityService } from './admin/activity/activity.service';
 import { SharedModule } from './shared/shared.module';
 import { PaginationService } from './shared/pagination/pagination.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import * as AOS from 'aos';
 @Component({
   selector: 'app-root',
   providers: [PaginationService], 
@@ -19,13 +20,17 @@ import { provideAnimations } from '@angular/platform-browser/animations';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router,@Inject(PLATFORM_ID) private platformId: object) {}
 
   isAdminRoute(): boolean {
     return this.router.url.startsWith('/admin');
   }
 
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      AOS.init(); // Only initialize AOS in the browser
+    }
+
   }
 
   showButton: boolean = false;

@@ -33,19 +33,7 @@
     font-weight: 400;
 }
 
-/*! CSS Used from: https://thepixelcurve.com/html/exvent/dest/assets/css/plugins/bootstrap.min.css */
-*,
-::after,
-::before {
-    box-sizing: border-box;
-}
 
-h4 {
-    margin-top: 0;
-    margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-}
 
 h4 {
     font-size: calc(1.275rem + .3vw);
@@ -640,3 +628,6 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     opacity: .6;
 }
 
+input,.btn-primary{
+    border-radius: 10px !important;
+}

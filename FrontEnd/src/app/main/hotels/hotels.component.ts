@@ -11,6 +11,8 @@ import { RatingService } from '../../shared/rating.service';
   styleUrls: ['./hotels.component.scss'], // Fix typo from "styleUrl" to "styleUrls"
 })
 export class HotelsComponent implements OnInit {
+  commentText: string = '';
+  selectedHotelId: number | null = null;
   hotels: any[] = [];
   quantity: number = this.hotels.length;
   selectedHotel: any = null;
@@ -101,5 +103,22 @@ export class HotelsComponent implements OnInit {
     }
   }
   
+
+  toggleCommentBox(hotelId: number) {
+    // Toggle visibility for the selected hotel
+    this.selectedHotelId = this.selectedHotelId === hotelId ? null : hotelId;
+  }
+
+  // Submit the comment
+  submitComment(hotelId: number) {
+    if (this.commentText.trim()) {
+      console.log("Submitted Comment for Hotel ID:", hotelId, this.commentText);
+      // Add your logic for saving the comment here (API call or state update)
+      
+      // Reset the comment box and hide it
+      this.commentText = '';  // Clear the textarea
+      this.selectedHotelId = null;  // Hide the comment box and show hotel details again
+    }
+  }
   
 }

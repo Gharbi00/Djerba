@@ -7,16 +7,19 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.BackEnd.repository.RatingRepository;
+
 @Entity
 @Getter
 @Setter
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) // Updated to TABLE_PER_CLASS
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // Use AUTO for TABLE_PER_CLASS
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+    @SequenceGenerator(name = "product_seq", sequenceName = "product_sequence", allocationSize = 1)
     private Long id;
-
+    
     @NotBlank
     private String name;
 
@@ -31,14 +34,13 @@ public abstract class Product {
     @Column(name = "picture_url")
     private List<String> pictureList = new ArrayList<>();
     
-    
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews = new ArrayList<>();
-    
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rating> ratings = new ArrayList<>();
-    
+    private String type;  
 
     private long phoneNumber;
+
+    @Column(name = "average_rating")
+    protected double averageRating;
+
+
+
 }

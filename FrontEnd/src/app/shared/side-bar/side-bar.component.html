@@ -1,0 +1,54 @@
+<aside>
+    <div class="sidebar">
+        <div class="sort-by">
+            <select id="input-sort" class="form-control" data-filter-sort="" data-filter-order="">
+                <option value="">Default sorting</option>
+                <option value="">Name (A - Z)</option>
+                <option value="">Name (Z - A)</option>
+                <option value="">Price (Low-High)</option>
+                <option value="">Price (High-Low)</option>
+                <option value="">Rating (Highest)</option>
+                <option value="">Rating (Lowest)</option>
+                <option value="">Model (A - Z)</option>
+                <option value="">Model (Z - A)</option>
+            </select>
+        </div>
+
+        <div class="widget-categories">
+            <h5 class="widget-title">{{ pageType | titlecase }} Categories</h5>
+            <ul class="categories sidebar-list list-unstyled">
+                <li *ngFor="let category of categories">
+                    <label>
+                        <input type="radio" name="category" [value]="category.value"> {{ category.label }}
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Filter by Price using ngx-slider -->
+        <div class="widget-price-filter pt-3">
+            <h5 class="widget-title">Filter By Price</h5>
+            <div *ngIf="isBrowser">
+                <ngx-slider [(value)]="priceMin" [(highValue)]="priceMax" [options]="priceOptions"></ngx-slider>
+            </div>
+            <p>Price Range: ${{ priceMin }} - ${{ priceMax }}</p>
+        </div>
+
+        <!-- Dynamic Services -->
+        <div class="widget-services pt-3">
+            <h5 class="widget-title">{{ pageType | titlecase }} Services</h5>
+            <ul class="services sidebar-list list-unstyled">
+                <li *ngFor="let service of services">
+                    <label>
+                        <input type="checkbox" name="services" [value]="service.value"> {{ service.label }}
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Search Button -->
+        <div class="pt-3">
+            <button class="btn btn-primary w-100">Apply Filters</button>
+        </div>
+    </div>
+</aside>

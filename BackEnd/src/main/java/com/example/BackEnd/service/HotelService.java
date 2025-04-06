@@ -2,7 +2,6 @@ package com.example.BackEnd.service;
 
 import com.example.BackEnd.dto.HotelDTO;
 import com.example.BackEnd.entity.Hotel;
-import com.example.BackEnd.entity.Rating;
 import com.example.BackEnd.entity.Review;
 import com.example.BackEnd.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +16,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class HotelService {
-
+    private final RatingService ratingService;
     @Autowired
     private HotelRepository hotelRepository;
-
+    @Autowired
+    public HotelService(RatingService ratingService, HotelRepository hotelRepository) {
+        this.ratingService = ratingService;
+        this.hotelRepository = hotelRepository;
+    }
     // Convert Entity -> DTO
     private HotelDTO convertToDTO(Hotel hotel) {
         return new HotelDTO(
@@ -36,9 +39,9 @@ public class HotelService {
             hotel.getOffersPrices(),
             hotel.getBabiesDiscount(),
             hotel.getChildrenDiscount(),
-            hotel.getTeenDiscount(),
-            hotel.getRatings(),
-            hotel.getReviews()
+            hotel.getTeenDiscount()
+            //hotel.getRatings(),
+            //hotel.getReviews()
         );
     }
 
@@ -80,20 +83,20 @@ public HotelDTO saveHotel(HotelDTO hotelDTO) {
         hotel.getPictureList().addAll(hotelDTO.getPictureList() != null ? hotelDTO.getPictureList() : new ArrayList<>());
 
         // Update ratings with proper references
-        hotel.getRatings().clear();
+/*         hotel.getRatings().clear();
         if (hotelDTO.getRatings() != null) {
             for (Rating rating : hotelDTO.getRatings()) {
-                rating.setProduct(hotel);  // Maintain bidirectional link
+                //rating.setProduct(hotel);  // Maintain bidirectional link
                 hotel.getRatings().add(rating);
             }
-        }
+        } */
 
         // Update reviews with proper references
-        hotel.getReviews().clear();
+        //hotel.getReviews().clear();
         if (hotelDTO.getReviews() != null) {
             for (Review review : hotelDTO.getReviews()) {
                 review.setProduct(hotel);  // Maintain bidirectional link
-                hotel.getReviews().add(review);
+                //hotel.getReviews().add(review);
             }
         }
 
@@ -155,5 +158,14 @@ public HotelDTO saveHotel(HotelDTO hotelDTO) {
                 .orElseThrow(() -> new RuntimeException("Hotel not found"));
         hotel.getOffersPrices().clear();
         hotelRepository.save(hotel);
+    }
+
+    public void updateHotelAverageRating(Long hotelId) {
+        Optional<Hotel> hotelOptional = hotelRepository.findById(hotelId);
+        if (hotelOptional.isPresent()) {
+            Hotel hotel = hotelOptional.get();
+            ratingService.updateAverageRating(hotel);  // Update the average rating using the service
+            hotelRepository.save(hotel);  // Save the updated hotel entity
+        }
     }
 }

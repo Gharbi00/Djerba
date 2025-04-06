@@ -11,7 +11,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ActivityService } from '../admin/activity/activity.service';
 import { HotelService } from '../admin/hotel/hotel.service';
-import {  provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BlogModule } from './blog/blog.module';
 import { HotelSingleComponent } from './hotels/hotel-single/hotel-single.component';
 import { CountdownModule } from 'ngx-countdown';
@@ -22,6 +22,7 @@ import { BookingService } from './hotels/booking-modal/booking.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingService } from '../shared/rating.service';
 import { ReviewService } from '../shared/review.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,15 @@ import { ReviewService } from '../shared/review.service';
     CountdownModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [HotelService, ActivityService,BookingService, provideHttpClient(withFetch()),RatingService,ReviewService],
+  providers: [
+    HotelService,
+    ActivityService,
+    BookingService,
+    provideHttpClient(withFetch()),
+    RatingService,
+    ReviewService,
+  ],
 })
 export class MainModule {}

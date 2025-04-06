@@ -9,6 +9,8 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -17,16 +19,19 @@ import { SearchComponent } from './search/search.component';
     LayoutComponent,
     PaginationComponent,
     AuthComponent,
-    SearchComponent
+    SearchComponent,
+    SideBarComponent,
+    
   ],
-  imports: [CommonModule, RouterModule, RouterOutlet,ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, RouterOutlet, ReactiveFormsModule,NgxSliderModule],
   exports: [
     HeaderComponent,
     FooterComponent,
     LayoutComponent,
     PaginationComponent,
-    AuthComponent
+    AuthComponent,
+    SideBarComponent,
   ],
-  providers:[AuthService]
+  providers: [AuthService],
 })
 export class SharedModule {}

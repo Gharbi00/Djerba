@@ -40,22 +40,26 @@
           <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 
             <ul class="navigation clearfix">
-              <li><a routerLink="/blog">Blog</a></li>
-
-              <li class="dropdown">
-                <a routerLink="/hotels">Pages</a>
-                <ul>
-                  <li><a routerLink="/hotels">Hotels</a></li>
-                  <li><a routerLink="/restaurants">Restaurants</a></li>
-                  <li><a routerLink="/activities">Activities</a></li>
-                  <li><a routerLink="/sites">Sites</a></li>
-                  <li><a routerLink="/">Coming Soon</a></li>
-                </ul>
-                <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+              <li>
+                  <a routerLink="/blog" routerLinkActive="active">Blog</a>
               </li>
-              <li><a routerLink="/about">About</a></li>
-              <li><a routerLink="/contact">Contact</a></li>
-            </ul>
+          
+              <li class="dropdown">
+                  <a routerLink="/hotels" routerLinkActive="active">Pages</a>
+                  <ul>
+                      <li><a routerLink="/hotels">Hotels</a></li>
+                      <li><a routerLink="/restaurants">Restaurants</a></li>
+                      <li><a routerLink="/activities">Activities</a></li>
+                      <li><a routerLink="/sites">Sites</a></li>
+                      <li><a routerLink="/">Coming Soon</a></li>
+                  </ul>
+                  <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+              </li>
+          
+              <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+              <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+          </ul>
+          
 
           </div>
 

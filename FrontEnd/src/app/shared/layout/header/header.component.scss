@@ -415,9 +415,9 @@ img {
 	-o-transform: scale(-1) !important;
 	transform: scale(-1) !important;
 	background: rgb(247, 0, 104) !important;
-	background: -moz-linear-gradient(to left, rgba(247, 0, 104, 1) 0%, rgba(68, 16, 102, 1) 100%) !important;
-	background: -webkit-linear-gradient(to left, rgba(247, 0, 104, 1) 0%, rgba(68, 16, 102, 1) 100%) !important;
-	background: linear-gradient(to left, rgba(247, 0, 104) 0%, rgba(68, 16, 102, 1) 100%) !important;
+	background: -moz-linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%) !important;
+	background: -webkit-linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%) !important;
+	background: linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%) !important;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F70068', endColorstr='#441066', GradientType=1) !important;
 	-webkit-transition: all 300ms ease !important;
 	-moz-transition: all 300ms ease !important;
@@ -425,6 +425,22 @@ img {
 	-o-transition: all 300ms ease !important;
 	transition: all 300ms ease !important;
 }
+
+.navigation li a.active {
+    position: relative;
+    display: inline-block;
+}
+
+.navigation li a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    height: 2px; /* Thickness of the border */
+    background: linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%);
+}
+
 
 .main-menu .navigation>li.current>a:before,
 .main-menu .navigation>li:hover>a:before {
@@ -470,7 +486,7 @@ img {
 	-ms-transform: rotateX(90deg) !important;
 	-o-transform: rotateX(90deg) !important;
 	transform: rotateX(90deg) !important;
-	border-bottom: 3px solid #f20487 !important;
+	border-bottom: 3px solid #f15d30!important;
 	border-radius: 0 0 6px 6px !important;
 	-webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.05), -2px 0px 5px 1px rgba(0, 0, 0, 0.05) !important;
 	-ms-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.05), -2px 0px 5px 1px rgba(0, 0, 0, 0.05) !important;
@@ -516,7 +532,7 @@ img {
 }
 
 .main-menu .navigation>li>ul>li:hover>a {
-	color: #e1137b !important;
+	color: #f15d30 !important;
 }
 
 .main-menu .navigation>li>ul>li>ul {
@@ -577,7 +593,7 @@ img {
 }
 
 .main-menu .navigation>li>ul>li>ul>li:hover>a {
-	color: #e1137b !important;
+	color: #f15d30 !important;
 }
 
 .main-menu .navigation>li.dropdown:hover>ul {
@@ -681,7 +697,7 @@ img {
 	font-size: 40px !important;
 	line-height: 50px !important;
 	cursor: pointer !important;
-	color: #e1137b !important;
+	color: #f15d30 !important;
 	margin: 7px 0px 2px !important;
 	display: none !important;
 }
@@ -765,7 +781,7 @@ img {
 	text-align: center !important;
 	font-size: 14px !important;
 	color: #ffffff !important;
-	background-color: #e1137b !important;
+	background-color: #f15d30 !important;
 	cursor: pointer !important;
 	z-index: 10 !important;
 	-webkit-transition: all 0.5s ease !important;
@@ -815,7 +831,7 @@ img {
 
 .mobile-menu .navigation li:hover>a,
 .mobile-menu .navigation li.current>a {
-	color: #e1137b !important;
+	color: #f15d30 !important;
 }
 
 .mobile-menu .navigation li.dropdown .dropdown-btn {
@@ -866,7 +882,7 @@ img {
 	.main-header,
 	.main-header.fixed-header,
 	.main-header .main-box {
-		background: linear-gradient(to right, #4caf50, #0056ff) !important;
+		background: linear-gradient(to right, #282828, #036197)!important;
 	}
 
 	.main-header .main-box {
@@ -1017,5 +1033,11 @@ img {
     -webkit-transition: all 700ms ease;
     -ms-transition: all 700ms ease;
     -o-transition: all 700ms ease;
+}
+
+[class*=" flaticon-"].flaticon-cancel-music:before {
+    font-family: Flaticon;
+    font-style: normal;
+	margin-left: 0px;
 }
 
