@@ -1,6 +1,5 @@
 package com.example.BackEnd.entity;
 
-import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Getter;

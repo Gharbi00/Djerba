@@ -115,7 +115,7 @@ export class BookingModalComponent implements OnInit {
     const offerPrice = this.bookingForm.get('offerPrice')?.value ?? 0;
     const userId = this.userId || null;
     const hotelId = this.hotel?.id || null;
-  
+
     // Check if required fields are missing
     const missingFields = [];
     if (!checkInDate) missingFields.push('Check-in Date');
@@ -131,7 +131,15 @@ export class BookingModalComponent implements OnInit {
       alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
       return;
     }
-  
+
+    // Validate check-in and check-out dates (check-in must be before check-out)
+    const checkIn = new Date(checkInDate);
+    const checkOut = new Date(checkOutDate);
+    if (checkIn >= checkOut) {
+      alert('Check-in date must be before check-out date.');
+      return;
+    }
+
     // Construct booking data with valid values
     const bookingData = {
       hotelId: Number(hotelId), // Ensure it's a number
@@ -144,7 +152,7 @@ export class BookingModalComponent implements OnInit {
       numberOfBabies: this.bookingForm.get('babies')?.value || 0,
       bookingPrice: this.totalPrice || 0
     };
-  
+
     console.log('Final Booking Data:', bookingData); // Debugging before submission
   
     // Make API request
@@ -156,7 +164,7 @@ export class BookingModalComponent implements OnInit {
       },
       (error) => {
         console.error('Booking Failed:', error);
-        alert(`Booking failed. Please try again.${error}`);
+        alert(`Booking failed. Please try again. ${error}`);
       }
     );
   }
@@ -165,6 +173,7 @@ export class BookingModalComponent implements OnInit {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }
+
 
 
 

@@ -6,17 +6,23 @@ import { HotelService } from './hotel/hotel.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivityService } from './activity/activity.service';
 import { AdminRoleGuard } from './admin-guard';
-
-
+import { RestaurantService } from './restaurant/restaurant.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { RestaurantComponent } from './restaurant/restaurant.component';
 
 @NgModule({
-  declarations: [],
-  
+  declarations: [RestaurantComponent],
+
   imports: [
     CommonModule,
     RouterModule.forChild(adminRoutes),
-    HttpClientModule
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxFileDropModule,
+    FormsModule,
   ],
-  providers: [HotelService,ActivityService,AdminRoleGuard], 
+  providers: [HotelService, ActivityService, RestaurantService, AdminRoleGuard],
 })
-export class AdminModule { }
+export class AdminModule {}

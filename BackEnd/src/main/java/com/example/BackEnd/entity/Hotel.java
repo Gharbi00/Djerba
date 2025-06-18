@@ -10,7 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.validation.constraints.Min;
 
-import com.example.BackEnd.repository.RatingRepository;
 
 import javax.validation.constraints.Max;
 
@@ -37,6 +36,7 @@ public class Hotel extends Product {
     @ElementCollection
     @CollectionTable(name = "hotel_offers", joinColumns = @JoinColumn(name = "hotel_id"))
     @Column(name = "offer_price")
+    @org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Float> offersPrices = new ArrayList<>();
     // Discounts between 0 and 1
     @DecimalMin("0.0")

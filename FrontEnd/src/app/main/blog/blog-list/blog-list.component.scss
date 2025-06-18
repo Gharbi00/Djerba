@@ -513,7 +513,7 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #fc097c;
+    color: #f15d30;
 }
 
 ul,
@@ -585,7 +585,7 @@ img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fc097c;
+    background-color: #f15d30;
     -webkit-animation: preloader 1.3s linear infinite;
     animation: preloader 1.3s linear infinite;
 }
@@ -621,7 +621,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 .btn {
     display: inline-block;
     position: relative;
-    background: #fc097c;
+    background: #f15d30;
     border-color: transparent;
     color: #ffffff;
     border-radius: 0px;
@@ -641,7 +641,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .btn.btn-orange {
-    background: #ffae4a;
+    background: #f15d30;
 }
 
 .btn::before {
@@ -677,7 +677,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 .btn-2 {
     display: inline-block;
     position: relative;
-    background: #ffae4a;
+    background: #f15d30;
     border-color: transparent;
     color: #ffffff;
     border-radius: 0px;
@@ -704,7 +704,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 .btn-2:hover {
     box-shadow: none;
     background: #ffffff;
-    color: #ffae4a;
+    color: #f15d30;
 }
 
 .exvent-header-section {
@@ -762,11 +762,11 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-menu .main-menu li.active-menu>a {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-menu .main-menu li.active-menu>.menu-icon::after {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-menu .main-menu li .menu-icon::after {
@@ -779,11 +779,11 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-menu .main-menu li:hover>.menu-icon::after {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-menu .main-menu li:hover>a {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-menu .main-menu li:hover>.sub-menu {
@@ -801,7 +801,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     box-shadow: 0 2px 29px rgba(0, 0, 0, 0.05);
     padding: 20px 0;
     border-radius: 5px;
-    border-top: 3px solid #fc097c;
+    border-top: 3px solid #f15d30;
     opacity: 0;
     z-index: 99;
     visibility: hidden;
@@ -824,7 +824,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-menu .main-menu li .sub-menu li.active>a {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-menu .main-menu li .sub-menu li.active>a::before {
@@ -834,7 +834,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-menu .main-menu li .sub-menu li:hover>a {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-meta {
@@ -856,7 +856,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-search .search-btn:hover {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .search-wrap {
@@ -889,7 +889,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 
 .search-wrap .search-inner .search-close:hover {
     transform: rotate(90deg);
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .search-wrap .search-inner .search-cell {
@@ -962,7 +962,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .header-cart .cart-btn:hover {
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .header-cart .cart-btn .count {
@@ -970,7 +970,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     height: 18px;
     line-height: 18px;
     text-align: center;
-    background: #fc097c;
+    background: #f15d30;
     border-radius: 50%;
     font-size: 10px;
     font-weight: 400;
@@ -1058,7 +1058,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 
 .dropdown-cart .cart-items .single-cart-item .item-content .quantity {
     font-size: 14px;
-    color: #fc097c;
+    color: #f15d30;
     line-height: 1.75;
     display: block;
 }
@@ -1090,7 +1090,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     font-weight: 700;
     line-height: 1.75;
     display: block;
-    color: #fc097c;
+    color: #f15d30;
 }
 
 .dropdown-cart .cart-btns {
@@ -1135,7 +1135,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 .header-toggle button span {
     width: 25px;
     height: 2px;
-    background: #fc097c;
+    background: #f15d30;
     margin: 5px 0;
     display: block;
 }
@@ -1159,7 +1159,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     background: none;
     border: 0;
     font-size: 18px;
-    color: #fc097c;
+    color: #f15d30;
     transition: all 0.3s linear;
 }
 
@@ -1185,7 +1185,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     font-size: 16px;
     font-weight: 600;
     font-family: "Ubuntu", sans-serif;
-    color: #fc097c;
+    color: #f15d30;
     padding: 5px 0px;
     position: relative;
 }
@@ -1206,7 +1206,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     content: '';
     width: 16px;
     height: 2px;
-    background-color: #fc097c;
+    background-color: #f15d30;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -1221,7 +1221,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     left: 50%;
     top: 50%;
     bottom: 0;
-    background-color: #fc097c;
+    background-color: #f15d30;
     transform: translate(-50%, -50%);
     transition: all 0.3s linear;
 }
@@ -1346,7 +1346,7 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .blog-list-page .single-blog .blog-body a:hover .blog-title {
-    color: #ffae4a;
+    color: #f15d30;
 }
 
 .blog-list-page .single-blog {
@@ -1372,11 +1372,11 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .blog-list-page .single-blog .blog-header .blog-event-date .month.bg-orange {
-    background-color: #ffae4a;
+    background-color: #f15d30;
 }
 
 .blog-list-page .single-blog .blog-header .blog-event-date .month.bg-pink {
-    background-color: #fc097c;
+    background-color: #f15d30;
 }
 
 .blog-list-page .single-blog .blog-header .blog-event-date .month.bg-blue {
@@ -1399,20 +1399,20 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .blog-list-page .single-blog .blog-body .blog-details .author:hover {
-    color: #ffae4a;
+    color: #f15d30;
 }
 
 .blog-list-page .single-blog .blog-body .blog-details .author span {
-    color: #ffae4a;
+    color: #f15d30;
     margin-right: 5px;
 }
 
 .blog-list-page .single-blog .blog-body .blog-details .comment:hover {
-    color: #ffae4a;
+    color: #f15d30;
 }
 
 .blog-list-page .single-blog .blog-body .blog-details .comment span {
-    color: #ffae4a;
+    color: #f15d30;
     margin-right: 5px;
 }
 
@@ -1446,17 +1446,17 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
     outline: none;
     border: none;
     box-shadow: none;
-    background-color: #ffae4a;
+    background-color: #f15d30;
     color: #ffffff;
 }
 
 .blog-list-page .blog-pagination .pagination .page-item .page-link:hover {
-    background-color: #ffae4a;
+    background-color: #f15d30;
     color: #ffffff;
 }
 
 .blog-list-page .blog-pagination .pagination .page-item .page-link.active {
-    background-color: #ffae4a;
+    background-color: #f15d30;
     color: #ffffff;
 }
 
@@ -1549,13 +1549,13 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .exvent-sidebar .sidebar-widget .category .category-item a:hover {
-    color: #ffae4a;
+    color: #f15d30;
 }
 
 .exvent-sidebar .sidebar-widget .category .category-item a i {
     font-size: 10px;
     line-height: 24px;
-    color: #ffae4a;
+    color: #f15d30;
     margin-right: 10px;
 }
 
@@ -1572,14 +1572,14 @@ input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type=
 }
 
 .exvent-sidebar .sidebar-widget .sidebar-offer a:hover {
-    background-color: #fc097c;
+    background-color: #f15d30;
 }
 
 
 
 
 .exvent-sidebar .sidebar-widget .popular-posts ul li .post-link .post-text .post-meta i {
-    color: #ffae4a;
+    color: #f15d30;
     margin-right: 5px;
 }
 

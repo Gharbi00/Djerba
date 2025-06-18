@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ActivityService {
-  private baseUrl = 'http://localhost:8080/activities';
+  private baseUrl = 'http://localhost:8080/activity';
   private uploadUrl = 'http://localhost:8080/upload'; // Your file upload endpoint
 
   constructor(private http: HttpClient) {}

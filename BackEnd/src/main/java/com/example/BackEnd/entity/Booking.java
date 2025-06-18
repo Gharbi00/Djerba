@@ -42,5 +42,6 @@ public class Booking {
     private int numberOfBabies;
 
 
-  
+    @Enumerated(EnumType.STRING) // Store the enum as a string in the database
+    private BookingStatus status; // The new status field
 }

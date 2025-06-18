@@ -172,17 +172,17 @@ ul {
     outline: none;
     border: none;
     box-shadow: none;
-    background-color: #ffae4a;
+    background-color: #008fff;
     color: #ffffff;
 }
 
  .blog-pagination .pagination .page-item .page-link:hover {
-    background-color: #ffae4a!important;
+    background-color: #008fff!important;
     color: #ffffff!important;
 }
 
  :host::ng-deep .page-item.active .page-link {
-    background-color: #ffae4a!important;
+    background-color: #008fff!important;
     color: #ffffff!important;
 }
 

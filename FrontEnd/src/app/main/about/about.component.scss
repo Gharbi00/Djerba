@@ -35,3 +35,37 @@
       /* Extra small screens */
   }
 }
+
+.testimony-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .4;
+}
+
+.ftco-no-pt{
+  margin-top: 6%;
+}
+.special-border{
+  border-radius: 12px;
+}
+
+.about-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust overlay color if needed */
+}
+
+.ftco-about .about-intro {
+  margin-top: -8%;
+}
+
+.services{
+  border-radius: 10px;
+  overflow: hidden;
+}

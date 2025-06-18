@@ -1,1 +1,110 @@
-<p>restaurant works!</p>
+<div class="container mt-5">
+    <h1 class="text-center">Manage Restaurants</h1>
+  
+    <!-- Add Restaurant Button -->
+    <button class="btn btn-primary mb-3" (click)="openModal()">Add Restaurant</button>
+  
+    <!-- Restaurant Table -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Description</th>
+          <th>Cuisine</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let restaurant of restaurants; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ restaurant.name }}</td>
+          <td>{{ restaurant.location }}</td>
+          <td>{{ restaurant.description }}</td>
+          <td>{{ restaurant.cuisine }}</td>
+          <td>{{ restaurant.phoneNumber }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="openModal(restaurant)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteRestaurant(restaurant.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="restaurantModal" tabindex="-1" aria-labelledby="restaurantModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="restaurantModalLabel">{{ isEditMode ? 'Edit Restaurant' : 'Add Restaurant' }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="restaurantForm" (ngSubmit)="saveRestaurant()">
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" formControlName="name" class="form-control" placeholder="Enter restaurant name" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Location</label>
+                <input type="text" formControlName="location" class="form-control" placeholder="Enter restaurant location" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea formControlName="description" class="form-control" placeholder="Enter restaurant description"></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Enter phone number" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Cuisine</label>
+                <input type="text" formControlName="cuisine" class="form-control" placeholder="e.g. French, Italian" />
+              </div>
+  
+              <!-- Picture List Section -->
+              <div class="mb-3">
+                <label class="form-label">Picture URLs</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Add picture URL" [(ngModel)]="newPictureUrl"  />
+                  <button type="button" class="btn btn-secondary" (click)="addPicture()">Add</button>
+                </div>
+                <div *ngIf="restaurantForm.get('pictureList')?.value?.length > 0">
+                  <ul class="list-group mt-2">
+                    <li class="list-group-item" *ngFor="let picture of restaurantForm.get('pictureList')?.value.split(','); let i = index">
+                      <span>{{ picture }}</span>
+                      <button type="button" class="btn btn-danger btn-sm float-end" (click)="removePicture(i)">Remove</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <!-- Menu List Section -->
+<!-- Menu List Section -->
+<div class="mb-3">
+    <label class="form-label">Menu Items</label>
+    <div class="row g-2 align-items-center mb-2" *ngFor="let item of menuItems; let i = index">
+      <div class="col-5">
+        <input type="text" class="form-control" placeholder="Dish Name" [(ngModel)]="item.name" name="menuName{{i}}"  />
+      </div>
+      <div class="col-5">
+        <input type="number" class="form-control" placeholder="Price" [(ngModel)]="item.price" name="menuPrice{{i}}"  />
+      </div>
+      <div class="col-2">
+        <button class="btn btn-danger" type="button" (click)="removeMenuItem(i)">X</button>
+      </div>
+    </div>
+    <button class="btn btn-secondary btn-sm" type="button" (click)="addMenuItem()">Add Menu Item</button>
+  </div>
+  
+  
+              <button type="submit" class="btn btn-success w-100">{{ isEditMode ? 'Update' : 'Save' }}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

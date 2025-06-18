@@ -110,11 +110,17 @@ public class RestaurantController {
     ],
     "phoneNumber": 9876543210,
     "cuisine": "French",
-    "menuList": [
-        "Foie Gras",
-        "Ratatouille",
-        "Crème Brûlée"
-    ]
+"menuList": [
+  {
+    "name": "Foie Gras",
+    "price": 25.50
+  },
+  {
+    "name": "Ratatouille",
+    "price": 18.00
+  }
+]
+
 }
     PUT http://localhost:8080/restaurants/{id}
 
