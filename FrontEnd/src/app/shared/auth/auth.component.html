@@ -3,30 +3,14 @@
     <div class="modal-body">
       <ul class="nav nav-tabs" id="loginRegisterTabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link active"
-            id="login-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#login"
-            type="button"
-            role="tab"
-            aria-controls="login"
-            aria-selected="true"
-          >
+          <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button"
+            role="tab" aria-controls="login" aria-selected="true">
             Login
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button
-            class="nav-link"
-            id="register-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#register"
-            type="button"
-            role="tab"
-            aria-controls="register"
-            aria-selected="false"
-          >
+          <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button"
+            role="tab" aria-controls="register" aria-selected="false">
             Register
           </button>
         </li>
@@ -35,43 +19,28 @@
       <!-- Tab Content -->
       <div class="tab-content" id="loginRegisterTabContent">
         <!-- Login Tab -->
-        <div
-          class="tab-pane fade show active"
-          id="login"
-          role="tabpanel"
-          aria-labelledby="login-tab"
-        >
+        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
           <div class="row justify-content-center g-5">
             <div>
               <h3 class="form-title black">Login</h3>
-              <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <form [formGroup]="loginForm" (ngSubmit)="onLogin()" method="post" autocomplete="on" novalidate>
                 <div class="row gy-4">
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        formControlName="email"
-                      />
+                      <input type="email" placeholder="Email" formControlName="email" name="username"
+                        autocomplete="username" required />
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        formControlName="password"
-                      />
+                      <input type="password" placeholder="Password" formControlName="password" name="password"
+                        autocomplete="current-password" required />
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        formControlName="rememberMe"
-                        id="rememberMe"
-                      />
+                      <input class="form-check-input" type="checkbox" formControlName="rememberMe" id="rememberMe"
+                        name="remember" />
                       <label class="form-check-label" for="rememberMe">Remember Me</label>
                     </div>
                   </div>
@@ -79,14 +48,12 @@
                     <button type="submit" class="submit_btn">Log in</button>
                   </div>
                   <div class="col-12">
-                    <a
-                      href="javascript:void(0);"
-                      (click)="onForgotPassword()"
-                      class="forgot-pass"
-                    >Forgot your password?</a>
+                    <a href="javascript:void(0);" (click)="onForgotPassword()" class="forgot-pass">Forgot your
+                      password?</a>
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
         </div>
@@ -101,100 +68,74 @@
                   <!-- First Name -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="text"
-                        placeholder="First Name"
-                        formControlName="firstName"
-                      />
+                      <input type="text" placeholder="First Name" formControlName="firstName" />
                     </div>
                   </div>
-              
+
                   <!-- Last Name -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="text"
-                        placeholder="Last Name"
-                        formControlName="lastName"
-                      />
+                      <input type="text" placeholder="Last Name" formControlName="lastName" />
                     </div>
                   </div>
-              
+
                   <!-- Username -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="text"
-                        placeholder="Username"
-                        formControlName="userName"
-                      />
+                      <input type="text" placeholder="Username" formControlName="userName" />
                     </div>
                   </div>
-              
+
                   <!-- Email -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        formControlName="email"
-                      />
+                      <input type="email" placeholder="Email" formControlName="email" />
                     </div>
                   </div>
-              
+
                   <!-- Password -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        formControlName="password"
-                      />
+                      <input type="password" placeholder="Password" formControlName="password" />
                     </div>
                   </div>
-              
+
                   <!-- Confirm Password -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="password"
-                        placeholder="Confirm Password"
-                        formControlName="confirmPassword"
-                      />
+                      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
                     </div>
                   </div>
-              
+
                   <!-- Nationality -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="text"
-                        placeholder="Nationality"
-                        formControlName="nationality"
-                      />
+                      <select formControlName="nationality" class="form-control">
+                        <option value="" disabled selected>Select nationality</option>
+                        <option *ngFor="let nationality of nationalities" [value]="nationality">
+                          {{ nationality }}
+                        </option>
+                      </select>
                     </div>
                   </div>
-              
+
+
                   <!-- Photo -->
                   <div class="col-12">
                     <div class="single-input white-bg">
-                      <input
-                        type="text"
-                        placeholder="Photo URL"
-                        formControlName="photo"
-                      />
+                      <input type="text" placeholder="Photo URL" formControlName="photo" />
                     </div>
                   </div>
-              
 
-              
+
+
                   <!-- Submit Button -->
                   <div class="col-sm-5 text-center">
                     <button type="submit" class="submit_btn">Register</button>
                   </div>
                 </div>
               </form>
-              
+
             </div>
           </div>
         </div>

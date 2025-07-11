@@ -1,12 +1,16 @@
 <div class="main-wrapper">
-  <section class="hero-wrap hero-wrap-2 js-fullheight" [style.backgroundImage]="'url(' + (hotel?.pictureList?.[0] || '') + ')'">
+  <section class="hero-wrap hero-wrap-2 js-fullheight" [style.backgroundImage]="
+    hotel?.photos && hotel.photos.length > 0
+      ? 'url(data:' + hotel.photos[0].fileType + ';base64,' + hotel.photos[0].base64Data + ')'
+      : ''">
     <div class="overlay"></div>
-  
+
     <div class="container">
       <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
         <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
           <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Hotels <i
-                  class="fa fa-chevron-right"></i></a></span> <span>Hotels <i class="fa fa-chevron-right"></i></span></p>
+                  class="fa fa-chevron-right"></i></a></span> <span>Hotels <i class="fa fa-chevron-right"></i></span>
+          </p>
           <h1 class="mb-0 bread">{{ hotel?.name }}</h1>
         </div>
       </div>
@@ -157,8 +161,7 @@
                     <h3><sup>$</sup>{{ hotel?.price }}</h3>
                   </div> -->
                 <div class="purchase-button">
-                  <a class="theme-btn btn-style-one" data-bs-toggle="modal" data-bs-target="#bookingModal"
-                  ></a>
+                  <a class="theme-btn btn-style-one" data-bs-toggle="modal" data-bs-target="#bookingModal"></a>
                 </div>
                 <div class="all-details">
                   <h4 class="title">Details</h4>
@@ -189,27 +192,27 @@
 
               <div class="widget-content">
 
-                  <a href="#">Event</a>
+                <a href="#">Event</a>
 
-                  <a href="#">Meetup</a>
+                <a href="#">Meetup</a>
 
-                  <a href="#">Conference</a>
+                <a href="#">Conference</a>
 
-                  <a href="#">Meeting</a>
+                <a href="#">Meeting</a>
 
-                  <a href="#">Business</a>
+                <a href="#">Business</a>
 
-                  <a href="#">Seminar</a>
+                <a href="#">Seminar</a>
 
-                  <a href="#">Workshop</a>
+                <a href="#">Workshop</a>
 
-                  <a href="#">Professionals</a>
+                <a href="#">Professionals</a>
 
-                  <a href="#">Eventa</a>
+                <a href="#">Eventa</a>
 
               </div>
 
-          </div>
+            </div>
           </div>
         </div>
         <!-- Sidebar Ends -->

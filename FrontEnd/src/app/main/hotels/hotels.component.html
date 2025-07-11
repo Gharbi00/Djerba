@@ -92,7 +92,7 @@
 
     <div class="row">
       <div class="col-md-2">
-        <app-side-bar pageType="restaurants"></app-side-bar>
+        <app-side-bar pageType="hotels"></app-side-bar>
       </div>
       <div class="row col-md-10">
 
@@ -109,12 +109,14 @@
               <div class="col-md-5" style="padding-left: 0px!important; padding-right: 0px!important;">
                 <span class="price">$550/person</span>
                 <owl-carousel-o [options]="carouselOptions">
-                  <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
-                    <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
+                  <ng-template carouselSlide *ngFor="let photo of hotel.photos">
+                    <div class="part-img"
+                      [style.backgroundImage]="'url(data:' + photo.fileType + ';base64,' + photo.base64Data + ')'"
                       style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
                     </div>
                   </ng-template>
                 </owl-carousel-o>
+
               </div>
 
               <div class="part-text col-md-7">
@@ -212,9 +214,11 @@
 
               <div class="col-md-5" style="padding-left: 0px!important; padding-right: 0px!important;">
                 <span class="price">$550/person</span>
+                
                 <owl-carousel-o [options]="carouselOptions">
-                  <ng-template carouselSlide *ngFor="let picture of hotel.pictureList">
-                    <div class="part-img" [style.backgroundImage]="'url(' + picture + ')'"
+                  <ng-template carouselSlide *ngFor="let photo of hotel.photos">
+                    <div class="part-img"
+                      [style.backgroundImage]="'url(data:' + photo.fileType + ';base64,' + photo.base64Data + ')'"
                       style="background-size: cover; background-position: center; border-radius: 2%; height: 350px; width: 100%;">
                     </div>
                   </ng-template>

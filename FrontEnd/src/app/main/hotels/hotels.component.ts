@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { HotelService } from '../../admin/hotel/hotel.service';
 import { PaginationService } from '../../shared/pagination/pagination.service';
-import { ReviewService } from '../../shared/review.service';
-import { RatingService } from '../../shared/rating.service';
+import { ReviewService } from '../../shared/services/review.service';
+import { RatingService } from '../../shared/services/rating.service';
+import { HotelService } from '../../shared/services/hotel.service';
+
 
 @Component({
   selector: 'app-hotels',
@@ -36,10 +37,10 @@ export class HotelsComponent implements OnInit {
 
   ngOnInit(): void {
     this.hotelService.getHotels().subscribe(
-      (data) => {
+      (data: any[]) => {
         this.hotels = data;
       },
-      (error) => {
+      (error: any) => {
         console.error('Error fetching hotel data:', error);
       }
     );

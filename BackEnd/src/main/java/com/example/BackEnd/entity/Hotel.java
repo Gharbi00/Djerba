@@ -10,15 +10,15 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.validation.constraints.Min;
 
+import org.hibernate.annotations.Cascade;
 
 import javax.validation.constraints.Max;
-
 
 @Entity
 @Getter
 @Setter
 @SequenceGenerator(name = "hotel_seq", sequenceName = "hotel_sequence", allocationSize = 1)
-@DiscriminatorValue("hotel") 
+@DiscriminatorValue("hotel")
 public class Hotel extends Product {
 
     @Id
@@ -29,32 +29,31 @@ public class Hotel extends Product {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Booking> bookings;
 
-    @Min(1) 
-    @Max(5)  
+    @Min(1)
+    @Max(5)
     private int starsNumber;
     private int availablePlaces;
     @ElementCollection
-    @CollectionTable(name = "hotel_offers", joinColumns = @JoinColumn(name = "hotel_id"))
+    @CollectionTable(name = "hotel_offers", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id", nullable = false, updatable = false))
     @Column(name = "offer_price")
-    @org.hibernate.annotations.Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE) // Force Hibernate cascade delete
     private List<Float> offersPrices = new ArrayList<>();
-    // Discounts between 0 and 1
-    @DecimalMin("0.0")
-    @DecimalMax("1.0")
-    private float babiesDiscount;    // For age < 2
 
     @DecimalMin("0.0")
     @DecimalMax("1.0")
-    private float childrenDiscount;  // For age 2-12
+    private float babiesDiscount;
 
     @DecimalMin("0.0")
     @DecimalMax("1.0")
-    private float teenDiscount; 
+    private float childrenDiscount;
+
+    @DecimalMin("0.0")
+    @DecimalMax("1.0")
+    private float teenDiscount;
 
     @PrePersist
     public void setProductType() {
-        this.setType("hotel");  
+        this.setType("hotel");
     }
-
 
 }

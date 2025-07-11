@@ -55,6 +55,7 @@ public Rating submitRating(Long userId, Long productId, String productType, int 
     rating.setScore(score);
 
     return ratingRepository.save(rating);
+    
 }
 
 private Product findProductByIdAndType(Long productId, String productType) {

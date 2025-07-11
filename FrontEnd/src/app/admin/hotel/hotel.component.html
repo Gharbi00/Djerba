@@ -1,5 +1,8 @@
 <div class="container mt-5">
   <h1 class="text-center">Manage Hotels</h1>
+<!-- <button class="btn btn-secondary" (click)="testAddHotel()">
+  ➕ Add Test Hotel
+</button> -->
 
   <!-- Add Hotel Button -->
   <button class="btn btn-primary mb-3" (click)="openModal()">Add Hotel</button>
@@ -8,41 +11,41 @@
   <table class="table table-striped">
     <thead>
 
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Description</th>
-            <th>Phone Number</th>
-            <th>Amenities</th>
-            <th>Available Places</th>
-            <th>Offers Prices</th>
-            <th>Stars Number</th>
-            <!-- New Discount Columns -->
-            <th>Babies Discount</th>
-            <th>Children Discount</th>
-            <th>Teen Discount</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <tr *ngFor="let hotel of hotels; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ hotel.name }}</td>
-            <td style="overflow: hidden; max-width: 70px;">{{ hotel.location }}</td>
-            <td>{{ hotel.description }}</td>
-            <td>{{ hotel.phoneNumber }}</td>
-            <td>{{ hotel.amenities }}</td>
-            <td>{{ hotel.availablePlaces }}</td>
-            <td>{{ hotel.offersPrices?.join(', ') }}</td>
-            <td>{{ hotel.starsNumber }}</td>
-        
-            <!-- Displaying Discount Values as Percentages -->
-            <td>{{ hotel.babiesDiscount | percent:'1.0-2' }}</td>
-            <td>{{ hotel.childrenDiscount | percent:'1.0-2' }}</td>
-            <td>{{ hotel.teenDiscount | percent:'1.0-2' }}</td>
-<!--         <td>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Phone Number</th>
+        <th>Amenities</th>
+        <th>Available Places</th>
+        <th>Offers Prices</th>
+        <th>Stars Number</th>
+        <!-- New Discount Columns -->
+        <th>Babies Discount</th>
+        <th>Children Discount</th>
+        <th>Teen Discount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let hotel of hotels; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ hotel.name }}</td>
+        <td style="overflow: hidden; max-width: 70px;">{{ hotel.location }}</td>
+        <td>{{ hotel.description }}</td>
+        <td>{{ hotel.phoneNumber }}</td>
+        <td>{{ hotel.amenities }}</td>
+        <td>{{ hotel.availablePlaces }}</td>
+        <td>{{ hotel.offersPrices?.join(', ') }}</td>
+        <td>{{ hotel.starsNumber }}</td>
+
+        <!-- Displaying Discount Values as Percentages -->
+        <td>{{ hotel.babiesDiscount | percent:'1.0-2' }}</td>
+        <td>{{ hotel.childrenDiscount | percent:'1.0-2' }}</td>
+        <td>{{ hotel.teenDiscount | percent:'1.0-2' }}</td>
+        <!--         <td>
           <ul>
             <li *ngFor="let picture of hotel.pictureList.split(',')">
               <a [href]="picture" target="_blank">View Picture</a>
@@ -63,101 +66,144 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="hotelModalLabel">{{ isEditMode ? 'Edit Hotel' : 'Add Hotel' }}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeModal()"></button>
         </div>
         <div class="modal-body">
           <form [formGroup]="hotelForm" (ngSubmit)="saveHotel()">
-  
+
             <!-- Existing Fields -->
             <!-- Name -->
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
               <input type="text" formControlName="name" class="form-control" placeholder="Enter hotel name" />
             </div>
-  
+
             <!-- Location -->
             <div class="mb-3">
               <label for="location" class="form-label">Location</label>
               <input type="text" formControlName="location" class="form-control" placeholder="Enter hotel location" />
             </div>
-  
+
             <!-- Description -->
             <div class="mb-3">
               <label for="description" class="form-label">Description</label>
-              <textarea formControlName="description" class="form-control" placeholder="Enter hotel description"></textarea>
+              <textarea formControlName="description" class="form-control"
+                placeholder="Enter hotel description"></textarea>
             </div>
-  
+
             <!-- Phone Number -->
             <div class="mb-3">
               <label for="phoneNumber" class="form-label">Phone Number</label>
               <input type="tel" formControlName="phoneNumber" class="form-control" placeholder="Enter phone number" />
             </div>
-  
+
             <!-- Available Places -->
             <div class="mb-3">
               <label for="availablePlaces" class="form-label">Available Places</label>
-              <input type="number" formControlName="availablePlaces" class="form-control" min="0" placeholder="Enter available places" />
+              <input type="number" formControlName="availablePlaces" class="form-control" min="0"
+                placeholder="Enter available places" />
             </div>
-  
+
             <!-- Offers Prices -->
             <div class="mb-3">
               <label for="offersPrices" class="form-label">Offers Prices</label>
               <div class="input-group">
-                <input type="number" class="form-control" placeholder="Add offer price" [(ngModel)]="newOfferPrice" [ngModelOptions]="{standalone: true}" />
+                <input type="number" class="form-control" placeholder="Add offer price" [(ngModel)]="newOfferPrice"
+                  [ngModelOptions]="{standalone: true}" />
                 <button type="button" class="btn btn-secondary" (click)="addOfferPrice()">Add</button>
               </div>
               <div *ngIf="hotelForm.get('offersPrices')?.value?.length > 0">
                 <ul class="list-group mt-2">
                   <li class="list-group-item" *ngFor="let price of hotelForm.get('offersPrices')?.value; let i = index">
                     <span>{{ price }}</span>
-                    <button type="button" class="btn btn-danger btn-sm float-end" (click)="removeOfferPrice(i)">Remove</button>
+                    <button type="button" class="btn btn-danger btn-sm float-end"
+                      (click)="removeOfferPrice(i)">Remove</button>
                   </li>
                 </ul>
               </div>
             </div>
-  
-            <!-- Stars -->
+
             <div class="mb-3">
               <label for="starsNumber" class="form-label">Stars</label>
-              <input type="number" formControlName="starsNumber" class="form-control" min="1" max="5" placeholder="Enter stars (1-5)" />
+              <input type="number" formControlName="starsNumber" class="form-control" min="1" max="5"
+                placeholder="Enter stars (1-5)" />
             </div>
-  
-            <!-- Picture List -->
-            <div class="mb-3">
-              <label for="pictureList" class="form-label">Pictures</label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Add picture URL" [(ngModel)]="newPictureUrl" [ngModelOptions]="{standalone: true}" />
-                <button type="button" class="btn btn-secondary" (click)="addPicture()">Add</button>
-              </div>
-              <div *ngIf="hotelForm.get('pictureList')?.value?.length > 0">
-                <ul class="list-group mt-2">
-                  <li class="list-group-item" *ngFor="let picture of hotelForm.get('pictureList')?.value.split(','); let i = index">
-                    <span>{{ picture }}</span>
-                    <button type="button" class="btn btn-danger btn-sm float-end" (click)="removePicture(i)">Remove</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-  
-            <!-- Newly Added Discount Fields -->
-            <!-- Babies Discount -->
+
+<div class="mb-3">
+  <label for="photos" class="form-label">Hotel Photos</label>
+  <input
+    type="file"
+    id="photos"
+    (change)="onFileSelected($event)"
+    class="form-control"
+    multiple
+    accept="image/*"
+    [class.is-invalid]="hotelForm.get('photos')?.invalid && hotelForm.get('photos')?.touched"
+  />
+
+  <!-- Selected File Info -->
+  <div *ngIf="selectedFiles.length > 0" class="mt-2">
+    <div class="alert alert-info">
+      <strong>Selected Files:</strong> {{ selectedFiles.length }} file(s) ready for upload
+    </div>
+    <ul class="list-group">
+      <li
+  class="list-group-item d-flex justify-content-between align-items-center"
+  *ngFor="let file of selectedFiles; let i = index"
+>
+  <div class="d-flex align-items-center">
+    <img
+      [src]="file.preview"
+      alt="Preview"
+      width="40"
+      height="40"
+      class="me-2 rounded border"
+      *ngIf="file.preview"
+    />
+    <span class="text-truncate" style="max-width: 70%">
+      {{ file.file.name }} ({{ file.file.size | number }} bytes)
+    </span>
+  </div>
+  <button type="button" class="btn btn-danger btn-sm" (click)="removeSelectedFile(i)">
+    <i class="bi bi-trash"></i> Remove
+  </button>
+</li>
+
+    </ul>
+  </div>
+
+  <!-- Validation Message -->
+  <div
+    *ngIf="hotelForm.get('photos')?.invalid && hotelForm.get('photos')?.touched"
+    class="invalid-feedback d-block"
+  >
+    Please upload at least one image for the hotel.
+  </div>
+</div>
+
+
+
             <div class="mb-3">
               <label for="babiesDiscount" class="form-label">Babies Discount (for age &lt; 2)</label>
-              <input type="number" formControlName="babiesDiscount" class="form-control" min="0" max="1" step="0.01" placeholder="Enter discount (0.0 to 1.0)" />
+              <input type="number" formControlName="babiesDiscount" class="form-control" min="0" max="1" step="0.01"
+                placeholder="Enter discount (0.0 to 1.0)" />
             </div>
-  
+
             <!-- Children Discount -->
             <div class="mb-3">
               <label for="childrenDiscount" class="form-label">Children Discount (for age 2-12)</label>
-              <input type="number" formControlName="childrenDiscount" class="form-control" min="0" max="1" step="0.01" placeholder="Enter discount (0.0 to 1.0)" />
+              <input type="number" formControlName="childrenDiscount" class="form-control" min="0" max="1" step="0.01"
+                placeholder="Enter discount (0.0 to 1.0)" />
             </div>
-  
+
             <!-- Teen Discount -->
             <div class="mb-3">
               <label for="teenDiscount" class="form-label">Teen Discount</label>
-              <input type="number" formControlName="teenDiscount" class="form-control" min="0" max="1" step="0.01" placeholder="Enter discount (0.0 to 1.0)" />
+              <input type="number" formControlName="teenDiscount" class="form-control" min="0" max="1" step="0.01"
+                placeholder="Enter discount (0.0 to 1.0)" />
             </div>
-  
+
             <!-- Submit -->
             <button type="submit" class="btn btn-success w-100">{{ isEditMode ? 'Update' : 'Save' }}</button>
           </form>
@@ -165,5 +211,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>

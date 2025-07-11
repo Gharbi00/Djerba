@@ -23,8 +23,8 @@ public class HotelController {
 
     @PostMapping
     public ResponseEntity<HotelDTO> saveHotel(@RequestBody HotelDTO hotelDTO) {
-        if (hotelDTO.getPictureList() == null) {
-            hotelDTO.setPictureList(new ArrayList<>());
+        if (hotelDTO.getPhotos() == null) {
+            hotelDTO.setPhotos(new ArrayList<>());
         }
         try {
             HotelDTO savedHotel = hotelService.saveHotel(hotelDTO);

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../../../shared/auth/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { BookingService } from './booking.service';
 
 @Component({

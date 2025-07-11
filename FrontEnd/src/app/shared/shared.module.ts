@@ -6,7 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { SideBarComponent } from './side-bar/side-bar.component';

@@ -1,47 +1,57 @@
 package com.example.BackEnd.service;
 
 import com.example.BackEnd.dto.HotelDTO;
+import com.example.BackEnd.dto.PhotoDTO;
 import com.example.BackEnd.entity.Hotel;
+import com.example.BackEnd.entity.Photo;
 import com.example.BackEnd.entity.Review;
 import com.example.BackEnd.repository.HotelRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-
 
 @Service
 public class HotelService {
     private final RatingService ratingService;
     @Autowired
     private HotelRepository hotelRepository;
+
     @Autowired
     public HotelService(RatingService ratingService, HotelRepository hotelRepository) {
         this.ratingService = ratingService;
         this.hotelRepository = hotelRepository;
     }
+
     // Convert Entity -> DTO
     private HotelDTO convertToDTO(Hotel hotel) {
+        List<PhotoDTO> photoDTOs = hotel.getPhotos().stream()
+                .map(PhotoDTO::new) // using the PhotoDTO(Photo photo) constructor
+                .collect(Collectors.toList());
+
         return new HotelDTO(
-            hotel.getId(),
-            hotel.getName(),
-            hotel.getLocation(),
-            hotel.getDescription(),
-            hotel.getPictureList(),
-            hotel.getPhoneNumber(),
-            hotel.getAmenities(),
-            hotel.getStarsNumber(),
-            hotel.getAvailablePlaces(),
-            hotel.getOffersPrices(),
-            hotel.getBabiesDiscount(),
-            hotel.getChildrenDiscount(),
-            hotel.getTeenDiscount()
-            //hotel.getRatings(),
-            //hotel.getReviews()
+                hotel.getId(),
+                hotel.getName(),
+                hotel.getLocation(),
+                hotel.getDescription(),
+                photoDTOs,
+                hotel.getPhoneNumber(),
+                hotel.getAmenities(),
+                hotel.getStarsNumber(),
+                hotel.getAvailablePlaces(),
+                hotel.getOffersPrices(),
+                hotel.getBabiesDiscount(),
+                hotel.getChildrenDiscount(),
+                hotel.getTeenDiscount()
+        // hotel.getRatings(),
+        // hotel.getReviews()
         );
     }
 
@@ -52,7 +62,22 @@ public class HotelService {
         hotel.setName(hotelDTO.getName());
         hotel.setLocation(hotelDTO.getLocation());
         hotel.setDescription(hotelDTO.getDescription());
-        hotel.setPictureList(hotelDTO.getPictureList());
+
+        // Convert PhotoDTOs to Photo entities
+        List<Photo> photos = hotelDTO.getPhotos().stream()
+                .map(dto -> {
+                    Photo photo = new Photo();
+                    photo.setId(dto.getId()); // Optional, usually null for new uploads
+                    photo.setFileName(dto.getFileName());
+                    photo.setFileType(dto.getFileType());
+                    photo.setData(Base64.getDecoder().decode(dto.getBase64Data()));
+                    photo.setProduct(hotel); // Important: establish relationship
+                    return photo;
+                })
+                .collect(Collectors.toList());
+
+        hotel.setPhotos(photos);
+
         hotel.setPhoneNumber(hotelDTO.getPhoneNumber());
         hotel.setAmenities(hotelDTO.getAmenities());
         hotel.setStarsNumber(hotelDTO.getStarsNumber());
@@ -61,74 +86,90 @@ public class HotelService {
         hotel.setBabiesDiscount(hotelDTO.getBabiesDiscount());
         hotel.setChildrenDiscount(hotelDTO.getChildrenDiscount());
         hotel.setTeenDiscount(hotelDTO.getTeenDiscount());
+
         return hotel;
     }
 
-public HotelDTO saveHotel(HotelDTO hotelDTO) {
-    Hotel hotel;
+    public HotelDTO saveHotel(HotelDTO hotelDTO) {
+        Hotel hotel;
 
-    if (hotelDTO.getId() != null) {
-        // Update scenario: Fetch existing hotel from the database
-        hotel = hotelRepository.findById(hotelDTO.getId())
-                .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + hotelDTO.getId()));
-        
-        // Update basic fields
-        hotel.setName(hotelDTO.getName());
-        hotel.setDescription(hotelDTO.getDescription());
-        hotel.setLocation(hotelDTO.getLocation());
-        hotel.setPhoneNumber(hotelDTO.getPhoneNumber());
+        if (hotelDTO.getId() != null) {
+            // Update scenario: Fetch existing hotel from the database
+            hotel = hotelRepository.findById(hotelDTO.getId())
+                    .orElseThrow(() -> new RuntimeException("Hotel not found with id: " + hotelDTO.getId()));
 
-        // Update pictureList
-        hotel.getPictureList().clear();
-        hotel.getPictureList().addAll(hotelDTO.getPictureList() != null ? hotelDTO.getPictureList() : new ArrayList<>());
+            // Update basic fields
+            hotel.setName(hotelDTO.getName());
+            hotel.setDescription(hotelDTO.getDescription());
+            hotel.setLocation(hotelDTO.getLocation());
+            hotel.setPhoneNumber(hotelDTO.getPhoneNumber());
 
-        // Update ratings with proper references
-/*         hotel.getRatings().clear();
-        if (hotelDTO.getRatings() != null) {
-            for (Rating rating : hotelDTO.getRatings()) {
-                //rating.setProduct(hotel);  // Maintain bidirectional link
-                hotel.getRatings().add(rating);
+            // Update pictureList
+            hotel.getPhotos().clear();
+
+            if (hotelDTO.getPhotos() != null) {
+                List<Photo> newPhotos = hotelDTO.getPhotos().stream()
+                        .map(dto -> {
+                            Photo photo = new Photo();
+                            photo.setFileName(dto.getFileName());
+                            photo.setFileType(dto.getFileType());
+                            photo.setData(Base64.getDecoder().decode(dto.getBase64Data()));
+                            photo.setProduct(hotel); // maintain relationship
+                            return photo;
+                        })
+                        .collect(Collectors.toList());
+
+                hotel.getPhotos().addAll(newPhotos);
             }
-        } */
+            // Update ratings with proper references
+            /*
+             * hotel.getRatings().clear();
+             * if (hotelDTO.getRatings() != null) {
+             * for (Rating rating : hotelDTO.getRatings()) {
+             * //rating.setProduct(hotel); // Maintain bidirectional link
+             * hotel.getRatings().add(rating);
+             * }
+             * }
+             */
 
-        // Update reviews with proper references
-        //hotel.getReviews().clear();
-        if (hotelDTO.getReviews() != null) {
-            for (Review review : hotelDTO.getReviews()) {
-                review.setProduct(hotel);  // Maintain bidirectional link
-                //hotel.getReviews().add(review);
+            // Update reviews with proper references
+            // hotel.getReviews().clear();
+            if (hotelDTO.getReviews() != null) {
+                for (Review review : hotelDTO.getReviews()) {
+                    review.setProduct(hotel); // Maintain bidirectional link
+                    // hotel.getReviews().add(review);
+                }
             }
+
+            // Update hotel-specific fields
+            hotel.setAmenities(hotelDTO.getAmenities());
+            hotel.setStarsNumber(hotelDTO.getStarsNumber());
+            hotel.setAvailablePlaces(hotelDTO.getAvailablePlaces());
+            hotel.setOffersPrices(hotelDTO.getOffersPrices() != null ? hotelDTO.getOffersPrices() : new ArrayList<>());
+            hotel.setBabiesDiscount(hotelDTO.getBabiesDiscount());
+            hotel.setChildrenDiscount(hotelDTO.getChildrenDiscount());
+            hotel.setTeenDiscount(hotelDTO.getTeenDiscount());
+
+        } else {
+            // Create scenario: Convert DTO to a new entity
+            hotel = convertToEntity(hotelDTO);
         }
 
-        // Update hotel-specific fields
-        hotel.setAmenities(hotelDTO.getAmenities());
-        hotel.setStarsNumber(hotelDTO.getStarsNumber());
-        hotel.setAvailablePlaces(hotelDTO.getAvailablePlaces());
-        hotel.setOffersPrices(hotelDTO.getOffersPrices() != null ? hotelDTO.getOffersPrices() : new ArrayList<>());
-        hotel.setBabiesDiscount(hotelDTO.getBabiesDiscount());
-        hotel.setChildrenDiscount(hotelDTO.getChildrenDiscount());
-        hotel.setTeenDiscount(hotelDTO.getTeenDiscount());
-
-    } else {
-        // Create scenario: Convert DTO to a new entity
-        hotel = convertToEntity(hotelDTO);
+        // Save the hotel and return the DTO
+        return convertToDTO(hotelRepository.save(hotel));
     }
-
-    // Save the hotel and return the DTO
-    return convertToDTO(hotelRepository.save(hotel));
-}
-
 
     public List<HotelDTO> getAllHotels() {
         return hotelRepository.findAll().stream()
-            .map(this::convertToDTO)
-            .collect(Collectors.toList());
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     public Optional<HotelDTO> getHotelById(Long id) {
         return hotelRepository.findById(id).map(this::convertToDTO);
     }
 
+    @Transactional
     public void deleteHotel(Long id) {
         hotelRepository.deleteById(id);
     }
@@ -164,8 +205,8 @@ public HotelDTO saveHotel(HotelDTO hotelDTO) {
         Optional<Hotel> hotelOptional = hotelRepository.findById(hotelId);
         if (hotelOptional.isPresent()) {
             Hotel hotel = hotelOptional.get();
-            ratingService.updateAverageRating(hotel);  // Update the average rating using the service
-            hotelRepository.save(hotel);  // Save the updated hotel entity
+            ratingService.updateAverageRating(hotel); // Update the average rating using the service
+            hotelRepository.save(hotel); // Save the updated hotel entity
         }
     }
 }

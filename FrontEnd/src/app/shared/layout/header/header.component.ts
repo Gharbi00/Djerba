@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { SearchService } from '../../search/search.service';
+import { SearchService } from '../../services/search.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   isDropdownOpen: boolean = false;
   searchToggler: boolean = false;
 
-  constructor(private searchToggleService: SearchService){}
+  constructor(private searchToggleService: SearchService,private alertService: AlertService){}
   @HostListener('window:scroll', [])
   onScroll(): void {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -55,14 +56,26 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     if (this.isBrowser()) {
+      localStorage.removeItem('authValue');
+      localStorage.removeItem('posId');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userRole');
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
+
       this.authToken = null;
       this.userId = null;
-      alert('You have been logged out successfully.');
+
+      this.alertService.showAlert('Logged out', 'You have been logged out successfully.', 'success')
+        .then(() => {
+          window.location.reload();
+        });
     }
-    window.location.reload();
-  }
+  
+
+}
+
 
   isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';

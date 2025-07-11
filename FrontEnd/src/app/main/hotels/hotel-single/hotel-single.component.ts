@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HotelService } from '../../../admin/hotel/hotel.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { HotelService } from '../../../shared/services/hotel.service';
 
 @Component({
   selector: 'app-hotel-single',
@@ -36,4 +36,9 @@ export class HotelSingleComponent implements OnInit {
       console.error("Invalid location URL:", this.hotel?.location);
     }
   }
+
+  getPhotoUrl(photo: { fileType: string; base64Data: string }): string {
+  return `data:${photo.fileType};base64,${photo.base64Data}`;
+}
+
 }

@@ -10,7 +10,6 @@ import { SitesComponent } from './sites/sites.component';
 import { MainRoutingModule } from './main-routing.module';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ActivityService } from '../admin/activity/activity.service';
-import { HotelService } from '../admin/hotel/hotel.service';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { BlogModule } from './blog/blog.module';
 import { HotelSingleComponent } from './hotels/hotel-single/hotel-single.component';
@@ -20,9 +19,11 @@ import { Error404Component } from './error404/error404.component';
 import { BookingModalComponent } from './hotels/booking-modal/booking-modal.component';
 import { BookingService } from './hotels/booking-modal/booking.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RatingService } from '../shared/rating.service';
-import { ReviewService } from '../shared/review.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RatingService } from '../shared/services/rating.service';
+import { ReviewService } from '../shared/services/review.service';
+import { HotelService } from '../shared/services/hotel.service';
 
 @NgModule({
   declarations: [

@@ -13,7 +13,7 @@ public class HotelDTO {
     private String name;
     private String location;
     private String description;
-    private List<String> pictureList;
+    private List<PhotoDTO> photos;
     private long phoneNumber;
     private String amenities;
     private int starsNumber;
@@ -27,7 +27,7 @@ public class HotelDTO {
     // Constructors
     public HotelDTO() {}
 
-    public HotelDTO(Long id, String name, String location, String description, List<String> pictureList,
+    public HotelDTO(Long id, String name, String location, String description, List<PhotoDTO> photos,
                     long phoneNumber, String amenities, int starsNumber, int availablePlaces,
                     List<Float> offersPrices, float babiesDiscount, float childrenDiscount, float teenDiscount
                     /* List<Rating> ratings, List<Review> reviews */) {
@@ -35,7 +35,7 @@ public class HotelDTO {
         this.name = name;
         this.location = location;
         this.description = description;
-        this.pictureList = pictureList;
+        this.photos = photos;
         this.phoneNumber = phoneNumber;
         this.amenities = amenities;
         this.starsNumber = starsNumber;
