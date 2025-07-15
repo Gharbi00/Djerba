@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(@Inject(PLATFORM_ID) private platformId: object,private sanitizer: DomSanitizer) {
     setTimeout(() => {
       this.isLoading = false;
-    }, 100);
+    }, 300);
   }
   carouselOptions: OwlOptions = {
     loop: false,

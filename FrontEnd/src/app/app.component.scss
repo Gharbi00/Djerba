@@ -87,8 +87,8 @@ svg {
 
 .progress-wrap {
     position: fixed;
-    right: 50px;
-    bottom: 50px;
+    right: 39px;
+    bottom: 120px;
     height: 45px;
     width: 45px;
     cursor: pointer;
@@ -136,10 +136,8 @@ svg {
     transform: translateX(0);
 }
 
-:host::ng-deep.font-special
-{   
-    font-family: 'Poppins', sans-serif!important;
+:host::ng-deep.font-special {
+    font-family: 'Poppins', sans-serif !important;
 
-    
+
 }
-
