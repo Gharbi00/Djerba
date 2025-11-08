@@ -32,7 +32,6 @@
               }
             ],
             "styles": [
-              
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
               "assets/css/animate.css",
@@ -45,11 +44,10 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-                        ],
+              "node_modules/@popperjs/core/dist/umd/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ],
             "server": "src/main.server.ts",
-            
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -59,12 +57,12 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb", 
-                  "maximumError": "2mb"    
+                  "maximumWarning": "2mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "200kb",  
+                  "maximumWarning": "200kb",
                   "maximumError": "200kb"
                 }
               ],
