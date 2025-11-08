@@ -1,0 +1,5 @@
+apiVersion: v2
+name: djerba
+description: Helm chart for Djerba full-stack app
+version: 1.0.0
+appVersion: "1.0"

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djerba-frontend
+  namespace: djerba
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: djerba-frontend
+  template:
+    metadata:
+      labels:
+        app: djerba-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: djerba-frontend:1.0
+          ports:
+            - containerPort: 80

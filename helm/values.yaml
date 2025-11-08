@@ -1,0 +1,9 @@
+replicaCount: 2
+
+backend:
+  image: djerba-backend:1.0
+  port: 8080
+
+frontend:
+  image: djerba-frontend:1.0
+  port: 80

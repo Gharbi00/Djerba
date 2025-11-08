@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: djerba-backend-service
+  namespace: djerba
+spec:
+  selector:
+    app: djerba-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP
