@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-about',
-  //imports: [],
+  standalone:true,
+  imports: [CommonModule,CarouselModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })

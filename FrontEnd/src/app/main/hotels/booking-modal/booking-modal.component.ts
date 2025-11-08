@@ -1,10 +1,13 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../shared/services/auth.service';
 import { BookingService } from './booking.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-booking-modal',
+  standalone: true,
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './booking-modal.component.html',
   styleUrls: ['./booking-modal.component.scss'],
 })
@@ -56,13 +59,13 @@ export class BookingModalComponent implements OnInit {
     const babies = this.bookingForm.get('babies')?.value || 0;
     const children = this.bookingForm.get('children')?.value || 0;
     const teens = this.bookingForm.get('teens')?.value || 0;
-  
+
     // Calculate number of adults
     const adults = adultPlaces - (babies + children + teens);
-  
+
     // Ensure no negative values
     this.bookingForm.get('adults')?.setValue(Math.max(0, adults));
-  
+
     // Recalculate the total price after determining the number of adults
     this.calculateTotalPrice();
   }
@@ -71,14 +74,14 @@ export class BookingModalComponent implements OnInit {
     const checkIn = new Date(this.bookingForm.get('checkInDate')?.value);
     const checkOut = new Date(this.bookingForm.get('checkOutDate')?.value);
     const numberOfNights = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24));
-  
+
     if (numberOfNights <= 0) {
       this.totalPrice = 0;
       return;
     }
-  
+
     this.selectedOfferPrice = this.bookingForm.get('offerPrice')?.value || 0;
-  
+
     // Get the number of adults and discounts
     const adults = this.bookingForm.get('adultPlaces')?.value || 0;
     const babies = this.bookingForm.get('babies')?.value || 0;
@@ -89,13 +92,13 @@ export class BookingModalComponent implements OnInit {
     const babiesDiscount = this.hotel?.babiesDiscount || 0;
     const childrenDiscount = this.hotel?.childrenDiscount || 0;
     const teenDiscount = this.hotel?.teenDiscount || 0;
-  
+
     // Calculate totals for each group
     const babiesTotal = babies * babiesDiscount;
     const childrenTotal = children * childrenDiscount;
     const teensTotal = teens * teenDiscount;
     const adultsTotal = adults; // Adjusted for real adult count
-  
+
     console.log(adultsTotal, "adult price");
     // Sum up the total price
     const totalPersonsPrice = babiesTotal + childrenTotal + teensTotal + adultsTotal;
@@ -104,10 +107,10 @@ export class BookingModalComponent implements OnInit {
 
   onSubmit(): void {
     console.log('Submit button clicked');
-  
+
     // Log form values for debugging
     console.log('Form Values:', this.bookingForm.value);
-  
+
     // Extract form values safely
     const checkInDate = this.bookingForm.get('checkInDate')?.value || '';
     const checkOutDate = this.bookingForm.get('checkOutDate')?.value || '';
@@ -124,7 +127,7 @@ export class BookingModalComponent implements OnInit {
     if (offerPrice <= 0) missingFields.push('Offer Price');
     if (!userId) missingFields.push('User ID');
     if (!hotelId) missingFields.push('Hotel ID');
-  
+
     // Debugging: Show missing fields
     if (missingFields.length > 0) {
       console.warn('Missing required fields:', missingFields);
@@ -154,7 +157,7 @@ export class BookingModalComponent implements OnInit {
     };
 
     console.log('Final Booking Data:', bookingData); // Debugging before submission
-  
+
     // Make API request
     this.bookingService.createBooking(bookingData).subscribe(
       (response) => {

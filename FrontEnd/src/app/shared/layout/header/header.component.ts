@@ -1,9 +1,15 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { AlertService } from '../../services/alert.service';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { AuthComponent } from '../../auth/auth.component';
+import { SearchComponent } from '../../search/search.component';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule,RouterLink,AuthComponent,SearchComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -15,7 +21,7 @@ export class HeaderComponent implements OnInit {
   isDropdownOpen: boolean = false;
   searchToggler: boolean = false;
 
-  constructor(private searchToggleService: SearchService,private alertService: AlertService){}
+  constructor(private searchToggleService: SearchService, private alertService: AlertService) { }
   @HostListener('window:scroll', [])
   onScroll(): void {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -72,9 +78,9 @@ export class HeaderComponent implements OnInit {
           window.location.reload();
         });
     }
-  
 
-}
+
+  }
 
 
   isBrowser(): boolean {

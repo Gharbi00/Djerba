@@ -3,18 +3,17 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { AdminModule } from './admin/admin.module';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { ActivityService } from './admin/activity/activity.service';
-import { SharedModule } from './shared/shared.module';
 import { PaginationService } from './shared/pagination/pagination.service';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import * as AOS from 'aos';
+import { AuthService } from './shared/services/auth.service';
 @Component({
   selector: 'app-root',
-  providers: [PaginationService], 
-  standalone:true,
-  imports: [RouterOutlet,AdminModule,CommonModule,NgxFileDropModule,SharedModule],
+  providers: [PaginationService,AuthService],
+  standalone: true,
+  imports: [RouterOutlet, CommonModule, NgxFileDropModule, FooterComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -42,17 +41,15 @@ export class AppComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    // Get the current scroll position
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
-    // Update the variable based on the scroll position
     this.showButton = scrollPosition >= this.scrollThreshold;
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  
+
   circumference: number = 307.919; // Circumference of the circle
   strokeOffset: number = this.circumference;
 

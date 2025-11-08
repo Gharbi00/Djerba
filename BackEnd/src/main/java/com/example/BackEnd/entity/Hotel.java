@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-import javax.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 import org.hibernate.annotations.Cascade;
 
-import javax.validation.constraints.Max;
 
 @Entity
 @Getter

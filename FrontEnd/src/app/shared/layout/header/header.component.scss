@@ -124,26 +124,7 @@ html [type=button] {
 	content: "" !important;
 }
 
-@media print {
 
-	*,
-	::after,
-	::before {
-		text-shadow: none !important;
-		box-shadow: none !important;
-	}
-
-	a:not(.btn) {
-		text-decoration: underline !important;
-	}
-
-	img {
-		page-break-inside: avoid !important;
-	}
-}
-
-/*! CSS Used from: https://expert-themes.com/html/eventrox/css/style.css */
-/*! @import https://expert-themes.com/html/eventrox/css/fontawesome-all.css */
 .fa {
 	-moz-osx-font-smoothing: grayscale !important;
 	-webkit-font-smoothing: antialiased !important;
@@ -389,8 +370,8 @@ img {
 	position: relative !important;
 	display: block !important;
 	font-size: 18px !important;
-    line-height: 30px !important;
-    font-weight: 700 !important;
+	line-height: 30px !important;
+	font-weight: 700 !important;
 	padding: 10px 0 !important;
 	color: #fefefe !important;
 	opacity: 1 !important;
@@ -427,18 +408,19 @@ img {
 }
 
 .navigation li a.active {
-    position: relative;
-    display: inline-block;
+	position: relative;
+	display: inline-block;
 }
 
 .navigation li a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 10px;
-    width: 100%;
-    height: 2px; /* Thickness of the border */
-    background: linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%);
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 100%;
+	height: 2px;
+	/* Thickness of the border */
+	background: linear-gradient(to left, rgb(238, 86, 26) 0%, rgb(234, 106, 14) 100%);
 }
 
 
@@ -470,7 +452,7 @@ img {
 	top: 100% !important;
 	width: 220px !important;
 	z-index: 100 !important;
-	display: none ;
+	display: none;
 	opacity: 0 !important;
 	visibility: hidden !important;
 	padding: 20px 0px !important;
@@ -486,7 +468,7 @@ img {
 	-ms-transform: rotateX(90deg) !important;
 	-o-transform: rotateX(90deg) !important;
 	transform: rotateX(90deg) !important;
-	border-bottom: 3px solid #f15d30!important;
+	border-bottom: 3px solid #f15d30 !important;
 	border-radius: 0 0 6px 6px !important;
 	-webkit-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.05), -2px 0px 5px 1px rgba(0, 0, 0, 0.05) !important;
 	-ms-box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.05), -2px 0px 5px 1px rgba(0, 0, 0, 0.05) !important;
@@ -704,7 +686,7 @@ img {
 
 .main-header.fixed-header .main-box {
 	padding: 10px 0 !important;
-    /* background:linear-gradient(to right, #ec752f, #0056ff) !important */
+	/* background:linear-gradient(to right, #ec752f, #0056ff) !important */
 	background: linear-gradient(to right, #282828, #036197) !important;
 }
 
@@ -882,7 +864,7 @@ img {
 	.main-header,
 	.main-header.fixed-header,
 	.main-header .main-box {
-		background: linear-gradient(to right, #282828, #036197)!important;
+		background: linear-gradient(to right, #282828, #036197) !important;
 	}
 
 	.main-header .main-box {
@@ -975,30 +957,33 @@ img {
 	color: #ffffff;
 }
 
-@media only screen and ( 767px <width<  1023px) {
-    .main-header .outer-box {
-        display: block !important;
+@media only screen and (767px <width< 1023px) {
+	.main-header .outer-box {
+		display: block !important;
 		margin-left: 10px !important;
-    }
+	}
 }
-.displayed{
-	display: block!important;
+
+.displayed {
+	display: block !important;
 }
 
 .mobile-menu .navigation li>ul,
 .mobile-menu .navigation li>ul>li>ul {
-	display: none ;
+	display: none;
 }
-.login-togler{
 
-    display: none !important;
+.login-togler {
+
+	display: none !important;
 }
+
 @media only screen and (max-width: 767px) {
-    .login-togler {
-        display: block !important;
-        margin: 0 !important;
+	.login-togler {
+		display: block !important;
+		margin: 0 !important;
 		position: relative !important;
-		padding: 10px 30px !important;
+		padding: 10px 15px !important;
 		font-size: 16px !important;
 		line-height: 30px !important;
 		color: #ffffff !important;
@@ -1007,37 +992,42 @@ img {
 		background-color: #f15d30 !important;
 		overflow: hidden !important;
 		border-radius: 10px !important;
-    }
+	}
 }
 
 
 .search-popup.popup-visible {
-    bottom: 0;
-    visibility: visible;
-    opacity: 1;
+	bottom: 0;
+	visibility: visible;
+	opacity: 1;
 }
 
 .search-popup {
-    position: fixed;
-    left: 0px;
-    bottom: -100%;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    visibility: hidden;
-    opacity: 0;
-    overflow: auto;
-    background: rgba(0, 0, 0, 0.80);
-    transition: all 700ms ease;
-    -moz-transition: all 700ms ease;
-    -webkit-transition: all 700ms ease;
-    -ms-transition: all 700ms ease;
-    -o-transition: all 700ms ease;
+	position: fixed;
+	left: 0px;
+	bottom: -100%;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	visibility: hidden;
+	opacity: 0;
+	overflow: auto;
+	background: rgba(0, 0, 0, 0.80);
+	transition: all 700ms ease;
+	-moz-transition: all 700ms ease;
+	-webkit-transition: all 700ms ease;
+	-ms-transition: all 700ms ease;
+	-o-transition: all 700ms ease;
 }
 
 [class*=" flaticon-"].flaticon-cancel-music:before {
-    font-family: Flaticon;
-    font-style: normal;
+	font-family: Flaticon;
+	font-style: normal;
 	margin-left: 0px;
 }
 
+@media (max-width:767px) {
+	.responsive-display {
+		display: none;
+	}
+}

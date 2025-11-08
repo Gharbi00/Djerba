@@ -5,13 +5,14 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import * as AOS from 'aos';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
-  //imports: [],
+  standalone: true,
+  imports: [CommonModule,CarouselModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   videoUrl: SafeResourceUrl | null = null;
   showModal = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object,private sanitizer: DomSanitizer) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private sanitizer: DomSanitizer) {
     setTimeout(() => {
       this.isLoading = false;
     }, 300);

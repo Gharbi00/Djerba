@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { PaginationService } from '../../shared/pagination/pagination.service';
 import { ReviewService } from '../../shared/services/review.service';
 import { RatingService } from '../../shared/services/rating.service';
 import { HotelService } from '../../shared/services/hotel.service';
+import { CommonModule } from '@angular/common';
+import { BookingModalComponent } from './booking-modal/booking-modal.component';
+import { RouterLink } from '@angular/router';
+import { PaginationComponent } from '../../shared/pagination/pagination.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SideBarComponent } from '../../shared/side-bar/side-bar.component';
 
 
 @Component({
   selector: 'app-hotels',
+  standalone:true,
+  imports:[CommonModule,BookingModalComponent,CarouselModule,RouterLink,PaginationComponent,ReactiveFormsModule,FormsModule,SideBarComponent],
   templateUrl: './hotels.component.html',
-  styleUrls: ['./hotels.component.scss'], // Fix typo from "styleUrl" to "styleUrls"
+  styleUrls: ['./hotels.component.scss'],
 })
 export class HotelsComponent implements OnInit {
   commentText: string = '';

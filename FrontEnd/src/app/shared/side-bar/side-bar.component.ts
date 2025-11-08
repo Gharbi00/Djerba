@@ -1,22 +1,24 @@
 import { Component, Inject, Input, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
-import { isPlatformBrowser } from '@angular/common';
+import { NgxSliderModule, Options } from '@angular-slider/ngx-slider';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
+  standalone: true,
+  imports: [CommonModule,NgxSliderModule],
   encapsulation: ViewEncapsulation.ShadowDom,
 })
 export class SideBarComponent {
-  
+
   @Input() pageType: string = 'hotels';
 
   categories: any[] = [];
   services: any[] = [];
   isBrowser;
-  constructor(@Inject(PLATFORM_ID) private platformId: object) { this.isBrowser = isPlatformBrowser(this.platformId);}
- 
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { this.isBrowser = isPlatformBrowser(this.platformId); }
+
 
   priceMin: number = 50;
   priceMax: number = 500;

@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-tourist-guide',
-  //imports: [],
+    standalone:true,
+  imports: [CommonModule],
   templateUrl: './tourist-guide.component.html',
   styleUrl: './tourist-guide.component.scss'
 })

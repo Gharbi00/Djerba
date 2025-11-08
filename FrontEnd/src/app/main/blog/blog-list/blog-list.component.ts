@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { PaginationService } from '../../../shared/pagination/pagination.service';
+import { CommonModule } from '@angular/common';
+import { PaginationComponent } from '../../../shared/pagination/pagination.component';
 
 @Component({
   selector: 'app-blog-list',
+  standalone: true,
+  imports: [CommonModule,PaginationComponent],
   templateUrl: './blog-list.component.html',
   styleUrl: './blog-list.component.scss'
 })
@@ -123,17 +127,17 @@ export class BlogListComponent {
 
 
 
-  pagesToBeShown=Math.ceil(this.blogs.length / 3);
+  pagesToBeShown = Math.ceil(this.blogs.length / 3);
 
-  constructor(private paginationService: PaginationService) {}
+  constructor(private paginationService: PaginationService) { }
 
   getSlice(): any[] {
     const startIndex = (this.paginationService.actualPage - 1) * this.perPage;
     const endIndex = startIndex + this.perPage;
-    console.log(this.pagesToBeShown,"pages to be shown");
-    console.log(this.paginationService.actualPage,'actual page');
+    console.log(this.pagesToBeShown, "pages to be shown");
+    console.log(this.paginationService.actualPage, 'actual page');
     return this.blogs.slice(startIndex, endIndex);
-    
+
   }
 
 }

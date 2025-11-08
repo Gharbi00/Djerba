@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RestaurantService } from './restaurant.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant',
-  //imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './restaurant.component.html',
   styleUrl: './restaurant.component.scss'
 })
@@ -24,7 +26,7 @@ export class RestaurantComponent implements OnInit {
       cuisine: ['', Validators.required],
       pictureList: ['', Validators.required],
       menuList: ['', Validators.required],
-      
+
     });
   }
 
@@ -45,23 +47,23 @@ export class RestaurantComponent implements OnInit {
       alert('Please enter a valid picture URL.');
       return;
     }
-  
+
     let pictures = this.restaurantForm.get('pictureList')?.value;
-  
+
     // Normalize to array
     if (typeof pictures === 'string') {
       pictures = pictures ? pictures.split(',').map((u: string) => u.trim()) : [];
     } else if (!Array.isArray(pictures)) {
       pictures = [];
     }
-  
+
     pictures.push(url);
-  
+
     // Set back the joined string, or set as array if your backend expects array
     this.restaurantForm.get('pictureList')?.setValue(pictures.join(','));
     this.newPictureUrl = '';
   }
-  
+
 
   removePicture(index: number): void {
     const list = this.restaurantForm.get('pictureList')?.value.split(',').map((url: string) => url.trim());
@@ -142,11 +144,11 @@ export class RestaurantComponent implements OnInit {
 
   menuItems: { name: string; price: number }[] = [];
 
-addMenuItem() {
-  this.menuItems.push({ name: '', price: 0 });
-}
+  addMenuItem() {
+    this.menuItems.push({ name: '', price: 0 });
+  }
 
-removeMenuItem(index: number) {
-  this.menuItems.splice(index, 1);
-}
+  removeMenuItem(index: number) {
+    this.menuItems.splice(index, 1);
+  }
 }

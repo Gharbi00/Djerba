@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sites',
-  ////imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './sites.component.html',
   styleUrl: './sites.component.scss'
 })

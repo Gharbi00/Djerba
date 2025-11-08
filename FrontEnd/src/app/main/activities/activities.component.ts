@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-activities',
+  standalone:true,
+  imports:[CommonModule,CarouselModule],
   templateUrl: './activities.component.html',
   styleUrls: ['./activities.component.scss'],
 })

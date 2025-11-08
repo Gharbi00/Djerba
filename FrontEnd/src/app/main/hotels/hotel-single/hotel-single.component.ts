@@ -2,24 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HotelService } from '../../../shared/services/hotel.service';
+import { CommonModule } from '@angular/common';
+import { BookingModalComponent } from '../booking-modal/booking-modal.component';
 
 @Component({
   selector: 'app-hotel-single',
+  standalone: true,
+  imports: [CommonModule,BookingModalComponent],
   templateUrl: './hotel-single.component.html',
   styleUrl: './hotel-single.component.scss'
 })
 export class HotelSingleComponent implements OnInit {
   hotel: any = null;
-  hotelId :any;
+  hotelId: any;
   safeLocation!: SafeResourceUrl;
   constructor(
     private route: ActivatedRoute,
     private hotelService: HotelService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-   this.hotelId = this.route.snapshot.paramMap.get('id'); // Get the hotel ID from the route
+    this.hotelId = this.route.snapshot.paramMap.get('id'); // Get the hotel ID from the route
     if (this.hotelId) {
       this.hotelService.getHotelById(this.hotelId).subscribe(
         (data) => {
@@ -38,7 +42,7 @@ export class HotelSingleComponent implements OnInit {
   }
 
   getPhotoUrl(photo: { fileType: string; base64Data: string }): string {
-  return `data:${photo.fileType};base64,${photo.base64Data}`;
-}
+    return `data:${photo.fileType};base64,${photo.base64Data}`;
+  }
 
 }

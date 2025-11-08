@@ -20,15 +20,15 @@ public class User {
     private Long id;
 
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(max = 30)
     private String firstName;
 
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(max = 30)
     private String lastName;
 
     @NotBlank
-    @Size(min = 3, max = 50)
+    @Size(max = 30)
     private String userName;
 
     @Email
